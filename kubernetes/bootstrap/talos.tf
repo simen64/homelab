@@ -175,7 +175,7 @@ output "kube_config" {
 }
 
 resource "local_file" "kubeconfig" {
-  content  = talos_cluster_kubeconfig.kubeconfig
+  content  = talos_cluster_kubeconfig.kubeconfig.kubeconfig_raw
   filename = "./kubeconfig"
 }
 

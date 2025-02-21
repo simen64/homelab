@@ -43,6 +43,10 @@ variable "install_disk" {
   default = "/dev/vda"
 }
 
+variable "github_token" {
+  type        = string
+}
+
 variable "control_plane_vms" {
   type = list(object({
     name        = string

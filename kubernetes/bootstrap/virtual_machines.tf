@@ -5,8 +5,8 @@ resource "proxmox_virtual_environment_vm" "control_plane_vms" {
   }
 
   name       = each.value.name
-  description = "Managed by Terraform"
-  tags        = ["terraform"]
+  description = "Managed by OpenTofu"
+  tags        = ["opentofu"]
 
   node_name   = each.value.node_name
   vm_id       = each.value.id
@@ -23,7 +23,7 @@ resource "proxmox_virtual_environment_vm" "control_plane_vms" {
   }
 
   agent {
-    enabled = true
+    enabled = false
   }
 
   network_device {
@@ -89,7 +89,7 @@ resource "proxmox_virtual_environment_vm" "worker_vms" {
   }
 
   agent {
-    enabled = true
+    enabled = false
   }
 
   network_device {

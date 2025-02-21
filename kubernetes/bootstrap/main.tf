@@ -34,7 +34,7 @@ provider "adguard" {
 
 provider "flux" {
   kubernetes = {
-    config_path = local_file.kubeconfig.filename
+    config_path = "./kubeconfig"
   }
   git = {
     url = "https://github.com/${var.github_org}/${var.github_repository}.git"
