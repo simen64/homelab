@@ -140,16 +140,8 @@ resource "talos_machine_bootstrap" "bootstrap" {
   endpoint             = var.control_plane_vms[0].ip_address
 }
 
-data "talos_cluster_health" "health" {
-  depends_on           = [ talos_machine_bootstrap.bootstrap ]
-  client_configuration = data.talos_client_configuration.talosconfig.client_configuration
-  control_plane_nodes  = [for i in var.control_plane_vms : "${i.ip_address}"]
-  worker_nodes         = [for i in var.worker_vms : "${i.ip_address}"]
-  endpoints            = [for i in var.control_plane_vms : "${i.ip_address}"]
-}
-
 resource "talos_cluster_kubeconfig" "kubeconfig" {
-  depends_on           = [data.talos_cluster_health.health]
+  depends_on           = [talos_machine_bootstrap.bootstrap]
 
   client_configuration = talos_machine_secrets.machine_secrets.client_configuration
   node                 = var.control_plane_vms[0].ip_address

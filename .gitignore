@@ -50,3 +50,6 @@ kubeconfig
 
 # Talos
 talosconfig
+
+# Temp
+tmp
