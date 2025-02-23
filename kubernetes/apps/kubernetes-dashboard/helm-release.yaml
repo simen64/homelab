@@ -9,6 +9,7 @@ spec:
     spec:
       chart: kubernetes-dashboard
       version: '7.10.4'
+      targetNamespace: monitoring
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
