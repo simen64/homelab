@@ -5,11 +5,11 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  targetNamespace: monitoring
   chart:
     spec:
       chart: kubernetes-dashboard
       version: '7.10.4'
-      targetNamespace: monitoring
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
