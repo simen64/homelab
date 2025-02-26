@@ -8,7 +8,7 @@ spec:
   targetNamespace: networking
   chart:
     spec:
-      chart: haproxytech/kubernetes-ingress
+      chart: kubernetes-ingress
       version: '1.24.0'
       sourceRef:
         kind: HelmRepository
