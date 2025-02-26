@@ -85,6 +85,22 @@ variable "worker_vms" {
       memory     = 2048
       ip_address = "192.168.50.201"
       id         = 401
+    },
+    {
+      name       = "talos-worker-02"
+      node_name  = "pve-1"
+      cpu_cores  = 2
+      memory     = 2048
+      ip_address = "192.168.50.202"
+      id         = 402
+    },
+    {
+      name       = "talos-worker-03"
+      node_name  = "pve-1"
+      cpu_cores  = 2
+      memory     = 2048
+      ip_address = "192.168.50.203"
+      id         = 403
     }
   ]
 }
