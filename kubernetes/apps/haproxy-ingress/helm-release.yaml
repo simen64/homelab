@@ -8,10 +8,9 @@ spec:
   targetNamespace: networking
   chart:
     spec:
-      chart: haproxy-ingress
+      chart: haproxytech/kubernetes-ingress
       version: '1.24.0'
       sourceRef:
         kind: HelmRepository
         name: haproxy-ingress
         namespace: flux-system
-      interval: 10m
