@@ -3,8 +3,8 @@ kind: Ingress
 metadata:
   name: dashboard-ingress
   namespace: monitoring
+  nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
-  ingressClassName: "nginx"
   rules:
   - host: kubernetes-dashboard.simenmo.com
     http:
