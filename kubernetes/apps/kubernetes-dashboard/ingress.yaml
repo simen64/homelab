@@ -16,6 +16,6 @@ spec:
         pathType: Prefix  
         backend:
           service:
-            name: monitoring-kubernetes-dashboard-web
+            name: monitoring-kubernetes-dashboard-kong-proxy
             port: 
-              number: 8000
+              number: 443
