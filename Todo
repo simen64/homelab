@@ -1,0 +1,22 @@
+Fix opentofu shit:
+    - Move flux bootstrap to seperate dir
+    - Make sure talosconfig works
+    - Test update mechanisms
+    - Test test test
+
+k8s:
+    - Fix ingress-nginx
+    - Try a new dashboard
+
+General:
+    - NextDNS
+    - Sealed secrets
+    - Public repo
+
+Storage:
+    - Longhorn or ceph
+
+To host:
+    - File storage?
+        - Nextcloud / Opencloud
+        - Rsync
