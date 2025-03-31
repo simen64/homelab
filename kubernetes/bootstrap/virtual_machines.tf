@@ -120,7 +120,7 @@ resource "proxmox_virtual_environment_vm" "worker_vms" {
       }
     }
     dns {
-      domain = "k8s.com"
+      domain = var.dns_search_domain
       servers = [var.dns_ip]
     }
   }

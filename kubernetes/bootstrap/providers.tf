@@ -8,13 +8,13 @@ terraform {
       source = "siderolabs/talos"
       version = "0.7.1"
     }
-    adguard = {
-      source = "gmichels/adguard"
-      version = "1.5.0"
-    }
     flux = {
       source = "fluxcd/flux"
       version = "1.5.0"
+    }
+    nextdns = {
+      source = "registry.terraform.io/carbans/nextdns"
+      version = "0.2.2"
     }
   }
 }

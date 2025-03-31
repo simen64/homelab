@@ -1,4 +1,4 @@
-resource "adguard_rewrite" "control_plane_dns" {
+resource "nextdns_rewrite" "control_plane_dns" {
   depends_on = [
     proxmox_virtual_environment_vm.control_plane_vms
   ]
@@ -8,7 +8,11 @@ resource "adguard_rewrite" "control_plane_dns" {
     vm.name => vm
   }
 
-  domain = var.control_plane_url
-  answer = each.value.ip_address
+  profile_id = var.nextdns_profile_id
+
+    rewrite {
+    address = each.value.ip_address
+    domain = var.control_plane_url
+  }
 
 }

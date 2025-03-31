@@ -23,14 +23,19 @@ variable "node_name" {
   default = "pve-1"
 }
 
-variable "dns_url" {
-  type = string
-  default = "dns.simenmo.com"
-}
-
 variable "dns_ip" {
   type = string
-  default = "192.168.50.238"
+  default = "2a07:a8c0::5e:12fe"
+}
+
+variable "dns_search_domain" {
+  type = string
+  default = "k8s.simen"
+}
+
+variable "nextdns_profile_id" {
+  type = string
+  default = "5e12fe"
 }
 
 variable "control_plane_url" {

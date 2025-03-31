@@ -13,23 +13,13 @@ variable "proxmox_ve_api_token" {
   sensitive = true
 }
 
-variable "adguard_username" {
+variable "nextdns_api_key" {
   type      = string
   sensitive = true
 }
 
-variable "adguard_password" {
-  type      = string
-  sensitive = true
-}
-
-provider "adguard" {
-  host     = var.dns_url
-  username = var.adguard_username
-  password = var.adguard_password
-  scheme   = "https" # defaults to https
-  timeout  = 10
-  insecure = false
+provider "nextdns" {
+  api_key = var.nextdns_api_key
 }
 
 provider "flux" {
