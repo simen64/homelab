@@ -50,6 +50,10 @@ kubeconfig
 
 # Talos
 talosconfig
+client_configuration
+worker.yaml
+controlplane.yaml
 
 # Temp
 tmp
+_test*

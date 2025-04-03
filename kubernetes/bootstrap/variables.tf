@@ -25,7 +25,7 @@ variable "node_name" {
 
 variable "dns_ip" {
   type = string
-  default = "2a07:a8c0::5e:12fe"
+  default = "45.90.28.43"
 }
 
 variable "dns_search_domain" {
@@ -50,6 +50,7 @@ variable "install_disk" {
 
 variable "github_token" {
   type        = string
+  sensitive = true
 }
 
 variable "control_plane_vms" {
