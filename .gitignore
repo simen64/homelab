@@ -57,3 +57,6 @@ controlplane.yaml
 # Temp
 tmp
 _test*
+
+# SSH keys
+id_ed25519
