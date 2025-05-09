@@ -1,0 +1,5 @@
+FROM quay.io/fedora/fedora-bootc:42
+
+RUN dnf -y install git qemu-guest-agent net-tools && dnf clean all
+
+COPY resources/sshd_config /etc/sshd/
