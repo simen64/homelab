@@ -1,0 +1,7 @@
+minio.simenmo.com {
+    reverse_proxy localhost:9000
+}
+
+minio-console.simenmo.com {
+    reverse_proxy localhost:9001
+}
