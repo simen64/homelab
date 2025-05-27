@@ -1,0 +1,34 @@
+[Unit]
+Description=Komodo core
+
+[Container]
+Image=ghcr.io/moghtech/komodo-core:latest
+
+# Use volume and network defined below
+Volume=repo-cache:/repo-cache
+Volume=/opt/docker/komodo/core.config.toml:/config/config.toml:ro,Z
+
+Network=komodo-backend.network
+PublishPort=9120:9120
+
+ContainerName=komodo-core
+LogDriver=journald
+
+Label=komodo.skip
+
+PodmanArgs=--memory 5g
+PodmanArgs=--cpus 2
+
+NoNewPrivileges=true
+ReadOnly=true
+ReadOnlyTmpfs=true
+
+[Service]
+# Restart service when sleep finishes
+Restart=always
+# Extend Timeout to allow time to pull the image
+TimeoutStartSec=900
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target

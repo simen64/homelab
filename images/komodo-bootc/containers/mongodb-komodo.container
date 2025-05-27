@@ -1,0 +1,38 @@
+[Unit]
+Description=MongoDB for Komodo
+
+[Container]
+Image=docker.io/library/mongo:4
+
+# Use volume and network defined below
+Volume=/opt/docker/komodo/mongo:/data/db:z
+Volume=/etc/passwd:/etc/passwd:ro
+Network=komodo-backend.network
+
+ContainerName=komodo-mongo
+LogDriver=journald
+
+Label=komodo.skip
+Exec=--quiet --wiredTigerCacheSizeGB 0.25
+
+PodmanArgs=--memory 5g
+PodmanArgs=--cpus 2
+
+NoNewPrivileges=true
+ReadOnly=true
+ReadOnlyTmpfs=true
+User=1000
+Group=1000
+
+Environment=MONGO_INITDB_ROOT_USERNAME: ${KOMODO_DB_USERNAME}
+Environment=MONGO_INITDB_ROOT_PASSWORD: ${KOMODO_DB_PASSWORD}
+
+[Service]
+# Restart service when sleep finishes
+Restart=always
+# Extend Timeout to allow time to pull the image
+TimeoutStartSec=900
+
+[Install]
+# Start by default on boot
+WantedBy=multi-user.target default.target komodo-core.service
