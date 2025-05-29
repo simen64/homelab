@@ -1,0 +1,16 @@
+FROM ghcr.io/secureblue/securecore-main-hardened
+
+#ARGS
+ARG IP_ADDR
+ARG GATEWAY
+ARG DNS_SERVER
+ARG HOSTNAME
+
+# Set kernel arg for static ip
+RUN echo "kargs = ['ip=${IP_ADDR}::${GATEWAY}:255.255.255.0:${HOSTNAME}:ens18:none:${DNS_SERVER}']" > /usr/lib/bootc/kargs.d/10-staticIP.toml
+
+# install packages  
+RUN dnf -y install qemu-guest-agent && dnf clean all
+
+# Copy sshd config over
+COPY resources/sshd_config /etc/ssh/
