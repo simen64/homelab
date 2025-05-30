@@ -28,6 +28,7 @@ resource "proxmox_virtual_environment_vm" "control_plane_vms" {
 
   network_device {
     bridge = "vmbr0"
+    firewall = true
   }
 
   disk {
@@ -57,10 +58,6 @@ resource "proxmox_virtual_environment_vm" "control_plane_vms" {
       domain = "k8s.com"
       servers = [var.dns_ip]
     }
-  }
-
-  network_device {
-    firewall = true
   }
 }
 
