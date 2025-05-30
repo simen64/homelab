@@ -1,0 +1,10 @@
+name: securecore-test
+description: testing securecore-test
+image-version: alpha
+
+base-image: ghcr.io/ublue-os/silverblue-main
+
+modules:
+  - type: containerfile
+    snippets:
+      - RUN dnf -y instasll qemu-guest-agent && dnf clean all
