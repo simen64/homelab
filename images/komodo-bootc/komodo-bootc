@@ -19,7 +19,8 @@ COPY resources/sshd_config /etc/ssh/
 COPY komodo-bootc/containers/ /usr/share/containers/systemd/
 
 # Copy over periphery service
-COPY komodo-bootc/komodo-periphery.service /usr/share/containers/systemd/
+COPY komodo-bootc/komodo-periphery.service /usr/lib/systemd/system/
 
 # Enable komodo periphery
-RUN systemctl enable --user komodo-periphery.service
+RUN systemctl enable komodo-periphery.service
+
