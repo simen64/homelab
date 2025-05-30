@@ -60,3 +60,12 @@ _test*
 
 # SSH keys
 id_ed25519
+
+# Images
+*.qcow2
+*.raw
+config.json
+image-build.log
+manifest*.json
+
+secrets.env
