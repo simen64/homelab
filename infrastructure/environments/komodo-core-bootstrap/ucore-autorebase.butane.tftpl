@@ -1,0 +1,111 @@
+variant: fcos
+version: 1.5.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ${pubkey1}
+        - ${pubkey2}
+      password_hash: ${vm_password_hash}
+      groups:
+        - docker
+storage:
+  directories:
+    - path: /etc/ucore-autorebase
+      mode: 0754
+  files:
+    - path: /etc/yum.repos.d/docker-ce.repo
+      contents:
+        source: https://download.docker.com/linux/fedora/docker-ce.repo    
+    - path: /etc/pki/rpm-gpg/RPM-GPG-KEY-1password
+      contents:
+        source: https://downloads.1password.com/linux/keys/1password.asc
+    - path: /etc/yum.repos.d/1password.repo
+      contents:
+        inline: |
+          [1password]
+          name=1Password Stable Channel
+          baseurl=https://downloads.1password.com/linux/rpm/stable/$basearch
+          enabled=1
+          gpgcheck=1
+          repo_gpgcheck=1
+          gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-1password
+kernel_arguments:
+  should_exist:
+    - "ip=${ip}::${gateway_ip}:255.255.255.0:${hostname}:ens18:none:${dns_ip}"
+systemd:
+  units:
+    - name: ucore-signed-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=rebase to securecore
+        After=network-online.target
+        Wants=network-online.target
+
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/bootc switch --apply ghcr.io/secureblue/securecore-main-hardened:latest
+        ExecStart=/usr/bin/systemctl disable ucore-signed-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: rpm-ostree-install-div-packages.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Install div packages
+        Wants=network-online.target
+        After=network-online.target
+        Wants=docker.service
+        ConditionPathExists=!/var/lib/%N.stamp
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/bin/rpm-ostree install 1password-cli qemu-guest-agent
+        ExecStart=/usr/bin/touch /var/lib/%N.stamp
+        ExecStart=/usr/bin/systemctl --no-block reboot
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: rpm-ostree-install-docker-ce.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Install Docker CE
+        Wants=network-online.target
+        After=network-online.target
+        ConditionPathExists=!/var/lib/%N.stamp
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/bin/curl --output-dir "/etc/yum.repos.d" --remote-name https://download.docker.com/linux/fedora/docker-ce.repo
+        ExecStart=/usr/bin/rpm-ostree override remove moby-engine containerd runc docker-cli --install docker-ce docker-ce-cli docker-compose
+        ExecStart=/usr/bin/touch /var/lib/%N.stamp
+        ExecStart=/usr/bin/systemctl --no-block reboot
+
+        [Install]
+        WantedBy=multi-user.target
+    - name: komodo-docker-compose.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Run docker compose for komodo
+        Requires=docker.service
+        After=docker.service
+
+        [Service]
+        Type=exec
+        WorkingDirectory=/home/core/my-app
+        ExecStart=/usr/bin/docker compose up
+        ExecStop=/usr/bin/docker compose down
+        Restart=always
+        TimeoutStartSec=0
+        User=core
+
+        [Install]
+        WantedBy=multi-user.target
