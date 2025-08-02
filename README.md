@@ -7,7 +7,7 @@ I currently use an old gaming PC for proxmox, an old HP workstation for OPNsense
 (Pictures and specs coming)
 
 ## Software
-|                                                                                                  |                                                                       |                         |
+| Logo                                                                                                 | Name                                                                       | Description                         |
 |:------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------|-------------------------|
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png">               | [Nextcloud](https://nextcloud.com/)                                   | File Storage / Syncing  |
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/home-assistant.png">          | [Home Assistant](https://www.home-assistant.io/)                      | Smart home              |
