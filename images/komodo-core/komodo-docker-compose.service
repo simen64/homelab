@@ -1,0 +1,16 @@
+[Unit]
+Description=Run docker compose for komodo
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=exec
+WorkingDirectory=/etc/containers/docker/komodo/
+ExecStart=/usr/bin/docker compose -f mongo.compose.yaml up
+ExecStop=/usr/bin/docker compose -f mongo.compose.yaml down
+Restart=always
+TimeoutStartSec=0
+User=core
+
+[Install]
+WantedBy=multi-user.target
