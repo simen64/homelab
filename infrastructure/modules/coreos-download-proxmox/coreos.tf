@@ -25,3 +25,7 @@ resource "proxmox_virtual_environment_download_file" "coreos_img" {
 
   file_name = "coreos-qemu.qcow2.xz.img"
 }
+
+output "file_id" {
+  value = proxmox_virtual_environment_download_file.coreos_img.id
+}
