@@ -1,7 +1,7 @@
 [[resource_sync]]
 name = "homelab-repo-sync"
 [resource_sync.config]
-repo = "simen64/homelab"
+linked_repo = "homelab"
 resource_path = ["komodo/"]
 webhook_enabled = true
 managed = true
