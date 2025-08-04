@@ -1,8 +1,32 @@
 [[resource_sync]]
-name = "homelab-repo-sync"
+name = "repos-sync"
+tags = ["syncs"]
 [resource_sync.config]
 linked_repo = "homelab"
 resource_path = ["komodo/"]
 webhook_enabled = true
 managed = true
 delete = true
+match_tags = ["repos"]
+
+[[resource_sync]]
+name = "servers-sync"
+tags = ["syncs"]
+[resource_sync.config]
+linked_repo = "homelab"
+resource_path = ["komodo/"]
+webhook_enabled = true
+managed = true
+delete = true
+match_tags = ["servers"]
+
+[[resource_sync]]
+name = "syncs-sync"
+tags = ["syncs"]
+[resource_sync.config]
+linked_repo = "homelab"
+resource_path = ["komodo/"]
+webhook_enabled = true
+managed = true
+delete = true
+match_tags = ["syncs"]
