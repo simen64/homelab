@@ -1,0 +1,6 @@
+[[server]]
+name = "core"
+[server.config]
+address = "https://periphery:8120"
+enabled = true
+

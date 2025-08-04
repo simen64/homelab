@@ -1,0 +1,5 @@
+[[repo]]
+name = "homelab"
+[repo.config]
+server = "core"
+repo = "simen64/homelab"
