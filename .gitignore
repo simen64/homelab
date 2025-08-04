@@ -69,3 +69,6 @@ image-build.log
 manifest*.json
 
 secrets.env
+
+.obsidian
+docs/
