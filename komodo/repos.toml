@@ -1,0 +1,7 @@
+[[repo]]
+name = "homelab"
+tags = ["repos"]
+[repo.config]
+server = "core"
+git_account = "simen64"
+repo = "simen64/homelab"
