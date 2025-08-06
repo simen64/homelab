@@ -3,7 +3,7 @@ name = "repos-sync"
 tags = ["syncs"]
 [resource_sync.config]
 linked_repo = "homelab"
-resource_path = ["komodo/"]
+resource_path = ["komodo/repos.toml"]
 webhook_enabled = true
 managed = true
 delete = true
@@ -14,7 +14,7 @@ name = "servers-sync"
 tags = ["syncs"]
 [resource_sync.config]
 linked_repo = "homelab"
-resource_path = ["komodo/"]
+resource_path = ["komodo/servers.toml"]
 webhook_enabled = true
 managed = true
 delete = true
@@ -25,7 +25,7 @@ name = "syncs-sync"
 tags = ["syncs"]
 [resource_sync.config]
 linked_repo = "homelab"
-resource_path = ["komodo/"]
+resource_path = ["komodo/syncs.toml"]
 webhook_enabled = true
 managed = true
 delete = true
