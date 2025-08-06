@@ -7,8 +7,6 @@ managed = true
 delete = true
 match_tags = ["repos"]
 
-##
-
 [[resource_sync]]
 name = "servers-sync"
 tags = ["syncs"]
@@ -17,8 +15,6 @@ resource_path = ["komodo/servers.toml"]
 managed = true
 delete = true
 match_tags = ["servers"]
-
-##
 
 [[resource_sync]]
 name = "syncs-sync"
