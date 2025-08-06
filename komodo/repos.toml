@@ -1,6 +1,6 @@
 [[repo]]
 name = "homelab"
-tags = "repos"
+tags = ["repos"]
 [repo.config]
 server = "core"
 repo = "simen64/homelab"
