@@ -1,0 +1,20 @@
+[[resource_sync]]
+name = "repos-sync"
+tags = ["syncs"]
+[resource_sync.config]
+linked_repo = "homelab"
+resource_path = ["komodo/repos.toml"]
+managed = true
+delete = true
+match_tags = ["repos"]
+
+##
+
+[[resource_sync]]
+name = "servers-sync"
+tags = ["syncs"]
+[resource_sync.config]
+linked_repo = "homelab"
+resource_path = ["komodo/servers.toml"]
+managed = true
+match_tags = ["servers"]
