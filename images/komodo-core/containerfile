@@ -1,7 +1,7 @@
 FROM ghcr.io/secureblue/securecore-main-hardened:latest
 
 # Copy sshd config over
-COPY resources/sshd_config /etc/ssh/
+COPY resources/system-configs/sshd_config /etc/ssh/
 
 # install qemu ga
 RUN dnf -y install qemu-guest-agent && dnf clean all
@@ -21,8 +21,8 @@ RUN dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 RUN systemctl enable docker
 
 # copy docker compose and env
-COPY resources/docker/compose/komodo/mongo.compose.yaml /etc/containers/docker/komodo/
-COPY resources/docker/compose/komodo/compose.env /etc/containers/docker/komodo/
+COPY resources/komodo/mongo.compose.yaml /etc/containers/docker/komodo/
+COPY resources/komodo/compose.env /etc/containers/docker/komodo/
 
 # copy bootstrap.sh
 COPY komodo-core/bootstrap.sh /etc/

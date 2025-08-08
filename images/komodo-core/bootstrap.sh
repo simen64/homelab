@@ -4,7 +4,7 @@ set -e
 
 EDITOR=nano
 
-read -e -p -s "Enter op service token: " OP_TOKEN
+read -s -e -p "Enter op service token: " OP_TOKEN
 
 export OP_SERVICE_ACCOUNT_TOKEN=$OP_TOKEN
 

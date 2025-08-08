@@ -1,0 +1,86 @@
+{
+  "default": [
+    {
+      "type": "reject"
+    }
+  ],
+  "transports": {
+    "docker": {
+      "ghcr.io/simen64": [
+        {
+          "type": "insecureAcceptAnything"
+          }
+      ],
+      "gcr.io/projectsigstore": [
+        {
+          "type": "sigstoreSigned",
+          "keyPath": "/usr/etc/pki/containers/cosign-release.pub",
+          "signedIdentity": {
+            "type": "matchRepository"
+          }
+        }
+      ],
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "docker-daemon": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "atomic": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "containers-storage": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "dir": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "oci": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "oci-archive": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "docker-archive": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    },
+    "tarball": {
+      "": [
+        {
+          "type": "reject"
+        }
+      ]
+    }
+  }
+}
