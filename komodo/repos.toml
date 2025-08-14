@@ -1,12 +1,3 @@
-[[server]]
-name = "core"
-tags = ["servers"]
-[server.config]
-address = "https://periphery:8120"
-enabled = true
-
-##
-
 [[repo]]
 name = "homelab"
 tags = ["repos"]
@@ -14,24 +5,3 @@ tags = ["repos"]
 server = "core"
 git_account = "simen64"
 repo = "simen64/homelab"
-
-##
-
-[[builder]]
-name = "local"
-[builder.config]
-type = "Server"
-params = {}
-
-##
-
-[[resource_sync]]
-name = "master-sync"
-[resource_sync.config]
-repo = "simen64/homelab"
-git_account = "simen64"
-resource_path = [
-  "komodo/repos.toml",
-  "komodo/servers.toml"
-]
-managed = true
