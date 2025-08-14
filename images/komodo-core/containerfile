@@ -29,3 +29,6 @@ COPY komodo-core/bootstrap.sh /etc/
 
 # copy compose systemd unit
 COPY komodo-core/komodo-docker-compose.service /usr/lib/systemd/system/
+
+# copy container policy
+COPY resources/system-configs/policy.json /etc/containers/
