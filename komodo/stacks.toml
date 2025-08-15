@@ -1,0 +1,42 @@
+[[stack]]
+name = "adguard-home"
+tags = ["stacks"]
+[stack.config]
+server = "core"
+linked_repo = "homelab"
+run_directory = "docker/adguard-home/"
+
+##
+
+[[stack]]
+name = "forgejo"
+tags = ["stacks"]
+[stack.config]
+server = "core"
+linked_repo = "homelab"
+run_directory = "docker/forgejo/"
+
+##
+
+[[stack]]
+name = "pi-hole"
+tags = ["stacks"]
+[stack.config]
+server = "core"
+linked_repo = "homelab"
+run_directory = "docker/pi-hole/"
+post_deploy.command = """
+  # Add multiple commands on new lines. Supports comments.
+docker exec -it pihole pihole setpassword [[PI-HOLE_PASSWORD]]
+"""
+extra_args = []
+
+##
+
+[[stack]]
+name = "technitium"
+tags = ["stacks"]
+[stack.config]
+server = "core"
+linked_repo = "homelab"
+run_directory = "docker/technitium/"
