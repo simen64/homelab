@@ -19,6 +19,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.forgejo-router.rule=Host(`forgejo.simenmo.com`)
       - traefik.http.routers.forgejo-router.entrypoints=web
+      - traefik.http.services.my-service.loadbalancer.server.port=3000
 
 networks:
   proxy:
