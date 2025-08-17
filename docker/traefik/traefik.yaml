@@ -26,3 +26,11 @@ certificatesResolvers:
           - 213.133.100.98
           - 88.198.229.192
           - 193.47.99.5
+tls:
+  stores:
+    default:
+      defaultGeneratedCert:
+        resolver: hetzner
+        domain:
+          main: "simenmo.com"
+          sans: "*.simenmo.com"
