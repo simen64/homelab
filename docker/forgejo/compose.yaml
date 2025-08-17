@@ -17,11 +17,11 @@ services:
       - '222:22'
     labels:
       - traefik.enable=true
-      - traefik.https.routers.forgejo-router.rule=Host(`forgejo.simenmo.com`)
-      - traefik.https.routers.forgejo-router.entrypoints=websecure
-      - traefik.https.services.my-service.loadbalancer.server.port=3000
-      - traefik.https.routers.forgejo-router.tls=true
-      - traefik.https.routers.forgejo-router.tls.certresolver=hetzner
+      - traefik.http.routers.forgejo-router.rule=Host(`forgejo.simenmo.com`)
+      - traefik.http.routers.forgejo-router.entrypoints=websecure
+      - traefik.http.services.my-service.loadbalancer.server.port=3000
+      - traefik.http.routers.forgejo-router.tls=true
+      - traefik.http.routers.forgejo-router.tls.certresolver=hetzner
 
 networks:
   proxy:
