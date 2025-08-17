@@ -9,7 +9,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yaml:/etc/traefik/traefik.yaml:ro
     networks:
-      - proxy
-networks:
-  proxy:
-    name: proxy
+      - adguard-home_default
+      - forgejo_forgejo
+      - komodo_default
