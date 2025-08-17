@@ -19,7 +19,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.forgejo-router.rule=Host(`forgejo.simenmo.com`)
       - traefik.http.routers.forgejo-router.entrypoints=websecure
-      - traefik.http.services.my-forgejo-service.loadbalancer.server.port=3000
+      - traefik.http.services.forgejo-service.loadbalancer.server.port=3000
       - traefik.http.routers.forgejo-router.tls=true
       - traefik.http.routers.forgejo-router.tls.certresolver=hetzner
 
