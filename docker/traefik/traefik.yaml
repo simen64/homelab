@@ -15,3 +15,14 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
     network: proxy
+certificatesResolvers:
+  hetzner:
+    acme:
+      email: "simenmunch@gmail.com"
+      storage: "/var/traefik/certs/acme.json"
+      dnsChallenge:
+        provider: hetzner
+        resolvers:
+          - 213.133.100.98
+          - 88.198.229.192
+          - 193.47.99.5
