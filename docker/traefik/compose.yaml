@@ -12,5 +12,5 @@ services:
       - proxy
 networks:
   proxy:
-    external: false
+    driver: bridge
     name: proxy
