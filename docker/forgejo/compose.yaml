@@ -20,8 +20,9 @@ services:
 
       - traefik.http.routers.forgejo-router-http.rule=Host(`forgejo.simenmo.com`)
       - traefik.http.routers.forgejo-router-http.entrypoints=web
-      - traefik.http.routers.forgejo-router-http.middlewares.http-to-https.redirectscheme.scheme=https
-      - traefik.http.routers.forgejo-router-http.middlewares.http-to-https.redirectscheme.permanent=true
+      - traefik.http.middlewares.http-to-https.redirectscheme.scheme=https
+      - traefik.http.middlewares.http-to-https.redirectscheme.permanent=true
+      - traefik.http.routers.forgejo-router-http.middlewares=http-to-https@docker
 
       - traefik.http.routers.forgejo-router-https.rule=Host(`forgejo.simenmo.com`)
       - traefik.http.routers.forgejo-router-https.entrypoints=websecure
