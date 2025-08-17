@@ -25,10 +25,10 @@ services:
 
       - traefik.http.routers.forgejo-router-https.rule=Host(`forgejo.simenmo.com`)
       - traefik.http.routers.forgejo-router-https.entrypoints=websecure
-      
+
       - traefik.http.services.forgejo-service.loadbalancer.server.port=3000
-      - traefik.http.routers.forgejo-router.tls=true
-      - traefik.http.routers.forgejo-router.tls.certresolver=hetzner
+      - traefik.http.routers.forgejo-router-https.tls=true
+      - traefik.http.routers.forgejo-router-https.tls.certresolver=hetzner
 
 
 networks:
