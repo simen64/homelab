@@ -12,7 +12,16 @@ entryPoints:
     address: :443
 http:
   middlewares:
-    test-auth:
+    dashboard:-auth:
       basicAuth:
         users:
           - "admin:$$apr1$$gFh5l.c7$$H5Y4Edn3NMomB63Yl72qS0"
+
+routers:
+    dashboard:
+      rule: "PathPrefix(`/dashboard`) || PathPrefix(`/api`)"   # match dashboard + API
+      service: api@internal
+      entryPoints:
+        - web
+      middlewares:
+        - dashboard-auth
