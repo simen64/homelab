@@ -2,6 +2,8 @@ services:
   traefik:
     image: traefik:v3.5
     restart: unless-stopped
+    environment:
+      - HETZNER_API_KEY=${HETZNER_API_KEY}
     ports:
       - "80:80"
       - "443:443"
