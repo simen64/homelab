@@ -4,9 +4,15 @@ log:
   level: DEBUG
 api:
   dashboard: true
-  insecure: true
+  insecure: false
 entryPoints:
   web:
     address: :80
   websecure:
     address: :443
+http:
+  middlewares:
+    test-auth:
+      basicAuth:
+        users:
+          - "admin:$$apr1$$gFh5l.c7$$H5Y4Edn3NMomB63Yl72qS0"
