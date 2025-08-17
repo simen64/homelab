@@ -22,6 +22,8 @@ services:
       - traefik.http.services.forgejo-service.loadbalancer.server.port=3000
       - traefik.http.routers.forgejo-router.tls=true
       - traefik.http.routers.forgejo-router.tls.certresolver=hetzner
+      - "traefik.http.middlewares.http-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.http-to-https.redirectscheme.permanent=true"
 
 networks:
   proxy:
