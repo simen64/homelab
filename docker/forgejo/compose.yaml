@@ -1,6 +1,6 @@
 networks:
-  forgejo:
-    external: false
+  proxy:
+    external: true
 
 services:
   server:
@@ -11,7 +11,7 @@ services:
       - USER_GID=1000
     restart: always
     networks:
-      - forgejo
+      - proxy
     volumes:
       - ./forgejo:/data
       - /etc/timezone:/etc/timezone:ro
@@ -19,3 +19,7 @@ services:
     ports:
       - '3000:3000'
       - '222:22'
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.forgejo-router.rule=Host(`forgejo.simenmo.com`)
+      - traefik.http.routers.forgejo-router.entrypoints=web
