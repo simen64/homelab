@@ -7,13 +7,25 @@ api:
   insecure: true
 entryPoints:
   web:
-    address: :80
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+
+  web-no-redirect:
+    address: :8080
   websecure:
     address: :443
+    http:
+      tls:
+        certResolver: hetzner
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.simenmo.com`)"
     network: proxy
 certificatesResolvers:
   hetzner:

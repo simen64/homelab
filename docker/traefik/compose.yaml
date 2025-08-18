@@ -4,10 +4,13 @@ services:
     restart: unless-stopped
     environment:
       - HETZNER_API_KEY=${HETZNER_API_KEY}
+      - TZ=Europe/Oslo
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
+    security_opt:
+      - no-new-privileges=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yaml:/etc/traefik/traefik.yaml:ro

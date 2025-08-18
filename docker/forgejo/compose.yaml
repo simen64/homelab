@@ -1,5 +1,5 @@
 services:
-  server:
+  forgejo:
     image: codeberg.org/forgejo/forgejo:12
     container_name: forgejo
     environment:
@@ -17,20 +17,7 @@ services:
       - '222:22'
     labels:
       - traefik.enable=true
-
-      - traefik.http.routers.forgejo-router-http.rule=Host(`forgejo.simenmo.com`)
-      - traefik.http.routers.forgejo-router-http.entrypoints=web
-      - traefik.http.middlewares.http-to-https.redirectscheme.scheme=https
-      - traefik.http.middlewares.http-to-https.redirectscheme.permanent=true
-      - traefik.http.routers.forgejo-router-http.middlewares=http-to-https@docker
-
-      - traefik.http.routers.forgejo-router-https.rule=Host(`forgejo.simenmo.com`)
-      - traefik.http.routers.forgejo-router-https.entrypoints=websecure
-
       - traefik.http.services.forgejo-service.loadbalancer.server.port=3000
-      - traefik.http.routers.forgejo-router-https.tls=true
-      - traefik.http.routers.forgejo-router-https.tls.certresolver=hetzner
-
 
 networks:
   proxy:
