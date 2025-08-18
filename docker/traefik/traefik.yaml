@@ -14,8 +14,6 @@ entryPoints:
           to: websecure
           scheme: https
 
-  web-no-redirect:
-    address: :8000
   websecure:
     address: :443
     http:

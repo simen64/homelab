@@ -17,7 +17,7 @@ services:
       - '222:22'
     labels:
       - traefik.enable=true
-      - traefik.http.services.forgejo-service.loadbalancer.server.port=3000
+      - traefik.http.services.forgejo.loadbalancer.server.port=3000
 
 networks:
   proxy:
