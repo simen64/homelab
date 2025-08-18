@@ -12,9 +12,6 @@ services:
       - ./forgejo:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    ports:
-      - '3000:3000'
-      - '222:22'
     labels:
       - traefik.enable=true
       - traefik.http.services.forgejo.loadbalancer.server.port=3000
