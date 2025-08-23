@@ -34,7 +34,7 @@ services:
       - 9120:9120
     labels:
       - traefik.enable=true
-      - traefik.http.services.adguard-home.loadbalancer.server.port=9120
+      - traefik.http.services.komodo.loadbalancer.server.port=9120
     networks: 
       - proxy
     env_file: ./compose.env
