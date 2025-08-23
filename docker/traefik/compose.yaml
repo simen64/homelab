@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.yaml:/etc/traefik/traefik.yaml:ro
-        ./dynamic/:/etc/traefik/dynamic/:ro
+      - ./dynamic/:/etc/traefik/dynamic/:ro
       - ./data/:/var/traefik/certs/:rw
     networks:
       - proxy
