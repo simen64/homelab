@@ -32,6 +32,11 @@ services:
       - mongo
     ports:
       - 9120:9120
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.adguard-home.loadbalancer.server.port=9120
+    networks: 
+      - proxy
     env_file: ./compose.env
     environment:
       KOMODO_DATABASE_ADDRESS: mongo:27017
@@ -75,3 +80,7 @@ volumes:
   mongo-config:
   # Core
   repo-cache:
+
+networks:
+  proxy:
+    external: true
