@@ -12,3 +12,6 @@ services:
     volumes:
       - ./workdir:/opt/adguardhome/work
       - ./confdir:/opt/adguardhome/conf
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.adguard-home.loadbalancer.server.port=3001
