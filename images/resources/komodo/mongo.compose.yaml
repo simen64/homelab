@@ -25,6 +25,8 @@ services:
   
   core:
     image: ghcr.io/moghtech/komodo-core:${COMPOSE_KOMODO_IMAGE_TAG:-latest}
+    labels:
+      komodo.skip: # Prevent Komodo from stopping with StopAllContainers
     restart: unless-stopped
     depends_on:
       - mongo
@@ -33,7 +35,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.komodo.loadbalancer.server.port=9120
-      - komodo.skip
     networks: 
       - proxy
     env_file: ./compose.env
