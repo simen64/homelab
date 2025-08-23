@@ -3,7 +3,7 @@ global:
 log:
   level: DEBUG
 api:
-  dashboard: true
+  dashboard: false
   insecure: true
 entryPoints:
   web:
