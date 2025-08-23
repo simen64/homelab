@@ -16,7 +16,7 @@ services:
       - ./confdir:/opt/adguardhome/conf
     labels:
       - traefik.enable=true
-      - traefik.http.services.adguard-home.loadbalancer.server.port=3001
+      - traefik.http.services.adguard-home.loadbalancer.server.port=80
 
 networks:
   proxy:
