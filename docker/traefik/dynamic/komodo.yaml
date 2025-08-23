@@ -1,0 +1,13 @@
+http:
+  routers:
+    komodo-router:
+      rule: "Host(`komodo.simenmo.com`)"
+      entryPoints:
+        - websecure
+      service: komodo-service
+
+  services:
+    komodo-service:
+      loadBalancer:
+        servers:
+          - url: "http://127.0.0.1:9120"
