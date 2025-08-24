@@ -1,6 +1,6 @@
 variable "provider_url" {
   type = string
-  default = "192.168.20.50:880"
+  default = "adguardhome.simenmo.com"
 }
 
 variable "provider_username" {
