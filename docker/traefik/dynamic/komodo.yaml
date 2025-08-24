@@ -5,7 +5,11 @@ http:
       entryPoints:
         - websecure
       service: komodo-service
-
+      tls:
+        domains:
+          - main: "simenmo.com"
+            sans:
+              - "*.simenmo.com"
   services:
     komodo-service:
       loadBalancer:
