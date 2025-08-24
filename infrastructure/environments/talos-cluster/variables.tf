@@ -1,8 +1,3 @@
-variable "nextdns_api_key" {
-  type        = string
-  sensitive = true
-}
-
 variable "proxmox_ve_api_token" {
   type      = string
   sensitive = true
@@ -23,16 +18,6 @@ variable "cluster_name" {
   default = "homelab"
 }
 
-variable "github_org" {
-  type        = string
-  default     = "simen64"
-}
-
-variable "github_repository" {
-  type        = string
-  default     = "homelab"
-}
-
 variable "default_gateway" {
   type    = string
   default = "192.168.50.1"
@@ -45,17 +30,12 @@ variable "node_name" {
 
 variable "dns_ip" {
   type = string
-  default = "45.90.28.43"
+  default = "192.168.20.50"
 }
 
 variable "dns_search_domain" {
   type = string
   default = "k8s.simen"
-}
-
-variable "nextdns_profile_id" {
-  type = string
-  default = "5e12fe"
 }
 
 variable "control_plane_url" {
@@ -66,11 +46,6 @@ variable "control_plane_url" {
 variable "install_disk" {
   type = string
   default = "/dev/vda"
-}
-
-variable "github_token" {
-  type        = string
-  sensitive = true
 }
 
 variable "control_plane_vms" {
@@ -103,32 +78,7 @@ variable "worker_vms" {
     ip_address  = string
     id          = number
   }))
-  default = [
-    {
-      name       = "talos-worker-01"
-      node_name  = "pve-1"
-      cpu_cores  = 2
-      memory     = 2048
-      ip_address = "192.168.50.201"
-      id         = 401
-    },
-    {
-      name       = "talos-worker-02"
-      node_name  = "pve-1"
-      cpu_cores  = 2
-      memory     = 2048
-      ip_address = "192.168.50.202"
-      id         = 402
-    },
-    {
-      name       = "talos-worker-03"
-      node_name  = "pve-1"
-      cpu_cores  = 2
-      memory     = 2048
-      ip_address = "192.168.50.203"
-      id         = 403
-    }
-  ]
+  default = []
 }
 
 
