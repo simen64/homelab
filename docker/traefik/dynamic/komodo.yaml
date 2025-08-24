@@ -14,4 +14,4 @@ http:
     komodo-service:
       loadBalancer:
         servers:
-          - url: "http://127.0.0.1:9120"
+          - url: "http://192.168.20.50:9120"
