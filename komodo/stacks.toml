@@ -40,3 +40,17 @@ tags = ["stacks"]
 server = "core"
 linked_repo = "homelab"
 run_directory = "docker/technitium/"
+
+##
+
+[[stack]]
+name = "traefik"
+tags = ["stacks"]
+[stack.config]
+server = "core"
+linked_repo = "homelab"
+run_directory = "docker/traefik/"
+environment = """
+  # VARIABLE = value
+HETZNER_API_KEY = [[HETZNER_API_KEY]]
+"""
