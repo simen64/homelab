@@ -23,6 +23,18 @@ http:
           - main: "simenmo.com"
             sans:
               - "*.simenmo.com"
+
+    opencloud-collabora-router:
+      rule: "Host(`collabora.simenmo.com`)"
+      entryPoints:
+        - websecure
+      service: opencloud-collabora-service
+      tls:
+        certResolver: hetzner
+        domains:
+          - main: "simenmo.com"
+            sans:
+              - "*.simenmo.com"
   services:
     komodo-service:
       loadBalancer:
@@ -32,3 +44,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.20.51:9200"
+    opencloud-collabora-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.20.51:9980"
