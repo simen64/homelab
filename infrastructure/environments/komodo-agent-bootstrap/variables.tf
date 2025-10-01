@@ -34,7 +34,6 @@ variable "template_vars_env" {
   default = {}
 }
 
-
 variable "virtual_machines" {
   type = list(object({
     name        = string
@@ -57,18 +56,33 @@ variable "virtual_machines" {
   }))
   default = [
     {
-      name        = "komodo-core-vm"
+      name        = "komodo-agent-cloud-vm"
       node_name   = "pve-1"
       cpu_cores   = 4
       memory      = 8192
-      disk_size   = 50
-      datastore_id = "containers-vms"
-      id          = 500
-      ip          = "192.168.20.50"
+      disk_size   = 1768
+      datastore_id = "storage"
+      id          = 501
+      ip          = "192.168.20.51"
       gateway_ip  = "192.168.20.1"
-      dns_ip      = "8.8.8.8"
-      hostname    = "securecore-komodo"
-      butane_path = "./ucore-autorebase-core.butane.tftpl"
+      dns_ip      = "192.168.20.50"
+      hostname    = "securecore-komodo-agent-cloud"
+      butane_path = "./ucore-autorebase-agent.butane.tftpl" 
+    },
+    {
+      name        = "komodo-agent-gpu-vm"
+      node_name   = "pve-1"
+      cpu_cores   = 4
+      memory      = 8192
+      disk_size   = 1768
+      datastore_id = "media"
+      id          = 502
+      ip          = "192.168.20.52"
+      gateway_ip  = "192.168.20.1"
+      dns_ip      = "192.168.20.50"
+      hostname    = "securecore-komodo-agent-gpu"
+      butane_path = "./ucore-autorebase-agent-gpu.butane.tftpl" 
+      hostpci     = {device = "hostpci0", id = "0000:01:00.0"}
     }
   ]
 }

@@ -1,0 +1,38 @@
+variant: fcos
+version: 1.5.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ${pubkey1}
+        - ${pubkey2}
+      password_hash: ${vm_password_hash}
+      groups:
+        - docker
+storage:
+  directories:
+    - path: /etc/ucore-autorebase
+      mode: 0754
+kernel_arguments:
+  should_exist:
+    - "ip=${ip}::${gateway_ip}:255.255.255.0:${hostname}:ens18:none:${dns_ip}"
+systemd:
+  units:
+    - name: ucore-signed-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=rebase to securecore
+        After=network-online.target
+        Wants=network-online.target
+
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/systemctl disable zincati.service
+        ExecStart=/usr/bin/bootc switch --apply ghcr.io/simen64/homelab/komodo-agent:latest
+        ExecStart=/usr/bin/systemctl disable ucore-signed-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+
+        [Install]
+        WantedBy=multi-user.target

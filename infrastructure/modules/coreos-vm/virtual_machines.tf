@@ -33,17 +33,25 @@ resource "proxmox_virtual_environment_vm" "bootc_vms" {
     firewall = true
   }
 
+  dynamic "hostpci" {
+    for_each = each.value.hostpci != null ? [each.value.hostpci] : []
+    content {
+      device = hostpci.value.device
+      id     = hostpci.value.id
+    }
+  }
+
   disk {
-    datastore_id = "containers-vms"
+    datastore_id = each.value.datastore_id
     file_id      = var.file_id
     file_format  = "raw"
     interface    = "virtio0"
-    size         = 20
+    size         = each.value.disk_size
   }
 
   operating_system {
     type = "l26"
   }
-
-  kvm_arguments = "-fw_cfg 'name=opt/com.coreos/config,string=${replace(var.ignition, ",", ",,")}'"
+  
+  kvm_arguments = "-fw_cfg 'name=opt/com.coreos/config,string=${replace(each.value.ignition, ",", ",,")}'"
 }
