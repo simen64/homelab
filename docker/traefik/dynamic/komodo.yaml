@@ -6,6 +6,7 @@ http:
         - websecure
       service: komodo-service
       tls:
+        certResolver: hetzner
         domains:
           - main: "simenmo.com"
             sans:
