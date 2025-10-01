@@ -11,8 +11,24 @@ http:
           - main: "simenmo.com"
             sans:
               - "*.simenmo.com"
+
+    opencloud-router:
+      rule: "Host(`opencloud.simenmo.com`)"
+      entryPoints:
+        - websecure
+      service: opencloud-service
+      tls:
+        certResolver: hetzner
+        domains:
+          - main: "simenmo.com"
+            sans:
+              - "*.simenmo.com"
   services:
     komodo-service:
       loadBalancer:
         servers:
           - url: "http://192.168.20.50:9120"
+    opencloud-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.20.51:9200"
