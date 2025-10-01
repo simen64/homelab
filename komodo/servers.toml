@@ -1,6 +1,23 @@
 [[server]]
+name = "cloud"
+tags = ["servers"]
+[server.config]
+address = "https://192.168.20.51:8120"
+enabled = true
+
+##
+
+[[server]]
 name = "core"
 tags = ["servers"]
 [server.config]
-address = "https://periphery:8120"
+enabled = true
+
+##
+
+[[server]]
+name = "gpu"
+tags = ["servers"]
+[server.config]
+address = "https://192.168.20.52:8120"
 enabled = true
