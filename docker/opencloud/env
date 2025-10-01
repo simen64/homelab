@@ -79,7 +79,7 @@ OC_DOCKER_IMAGE=opencloudeu/opencloud-rolling
 OC_DOCKER_TAG=
 # Domain of openCloud, where you can find the frontend.
 # Defaults to "cloud.opencloud.test"
-OC_DOMAIN=
+OC_DOMAIN=opencloud.simenmo.com
 # Demo users should not be created on a production instance,
 # because their passwords are public. Defaults to "false".
 # If demo users is set to "true", the following user accounts are created automatically:
