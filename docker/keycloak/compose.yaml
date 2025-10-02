@@ -1,0 +1,18 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    command: start
+    environment:
+      KC_HOSTNAME: "sso.simenmo.com"
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "admin"
+    volumes:
+      - ./data/keycloak:/opt/keycloak/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.adguard-home.loadbalancer.server.port=3000
+      # Redirect '/' to '/admin'
+      - "traefik.http.middlewares.custom-redirect.redirectregex.regex=^https:\\/\\/([^\\/]+)\\/?$$"
+      - "traefik.http.middlewares.custom-redirect.redirectregex.replacement=https://$$1/admin"
+      - "traefik.http.routers.route-auth.middlewares=default@file,custom-redirect"
+    restart: unless-stopped
