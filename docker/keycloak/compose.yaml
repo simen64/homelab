@@ -22,6 +22,7 @@ services:
       - KC_PROXY_HEADERS=xforwarded
       - KC_PROXY_TRUSTED_ADDRESSES=192.168.20.50,100.64.0.15
       - KC_HOSTNAME=https://keycloak.simenmo.com
+      - KC_HOSTNAME_STRICT=true
       - KC_PROXY=edge
       - KC_HTTP_ENABLED=true
       - KC_DB=postgres
@@ -37,7 +38,7 @@ services:
       keycloak:
     labels:
       - traefik.enable=true
-      - traefik.http.services.adguard-home.loadbalancer.server.port=8080
+      - traefik.http.services.keycloak.loadbalancer.server.port=8080
 networks:
   proxy:
     external: true
