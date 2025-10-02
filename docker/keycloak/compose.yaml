@@ -1,6 +1,6 @@
 services:
   postgresql:
-    image: postgres:16
+    image: postgres:17
     environment:
       - POSTGRES_USER=keycloak
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -16,14 +16,11 @@ services:
     command: start
     depends_on:
       - postgresql
-    ports:
-      - 8081:8080
     environment:
       - KC_FEATURES=hostname:v2
       - KC_PROXY_ADDRESS_FORWARDING=true
       - KC_PROXY_HEADERS=xforwarded
       - KC_PROXY_TRUSTED_ADDRESSES=192.168.20.50,100.64.0.15
-      - KC_HOSTNAME_STRICT=false
       - KC_HOSTNAME=https://keycloak.simenmo.com
       - KC_PROXY=edge
       - KC_HTTP_ENABLED=true
