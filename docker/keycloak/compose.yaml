@@ -19,7 +19,7 @@ services:
     environment:
       - KC_PROXY_ADDRESS_FORWARDING=true
       - KC_HOSTNAME_STRICT=false
-      - KC_HOSTNAME=sso.simenmo.com
+      - KC_HOSTNAME=keycloak.simenmo.com
       - KC_PROXY=edge
       - KC_HTTP_ENABLED=true
       - KC_DB=postgres
