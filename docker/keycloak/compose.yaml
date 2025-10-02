@@ -4,6 +4,7 @@ services:
     command: start
     environment:
       KC_HOSTNAME: "sso.simenmo.com"
+      KC_PROXY: 'edge'
       KEYCLOAK_ADMIN: "admin"
       KEYCLOAK_ADMIN_PASSWORD: "admin"
     volumes:
