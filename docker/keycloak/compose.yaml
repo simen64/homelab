@@ -13,7 +13,7 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.4.0
     restart: always
-    command: start --optimized
+    command: start
     depends_on:
       - postgresql
     ports:
