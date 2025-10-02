@@ -31,8 +31,8 @@ services:
       - KC_DB_URL_HOST=postgresql
       - KC_DB_URL_PORT=5432
       - KC_DB_URL_DATABASE=keycloak
-      - KEYCLOAK_ADMIN=admin
-      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
     networks:
       proxy:
       keycloak:
