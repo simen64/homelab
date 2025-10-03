@@ -10,6 +10,7 @@ services:
       - "443:443"
       - "8080:8080"
       - "8000:8000"
+      - "2222:2222"
     security_opt:
       - no-new-privileges=true
     volumes:
