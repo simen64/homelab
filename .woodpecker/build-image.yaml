@@ -1,0 +1,22 @@
+when:
+  - event: push
+  - path:
+      include:
+        - "images/**"
+
+steps:
+  build-komodo-core:
+    image: woodpeckerci/plugin-docker-buildx
+    pull: true
+    settings:
+      repo: ${CI_REPO_OWNER}
+      registry: ${REGISTRY_URL}
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      dockerfile: images/komodo-core/containerfile
+      tags:
+        - latest
+      when:
+        evaluate: 'CI_COMMIT_MESSAGE contains "komodo-core" || CI_PIPELINE_FILES contains "images/komodo-core/"'
