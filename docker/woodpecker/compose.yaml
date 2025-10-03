@@ -25,7 +25,7 @@ services:
       - traefik.http.services.woodpecker-grpc.loadbalancer.server.port=9000
       - traefik.http.services.woodpecker-grpc.loadbalancer.server.scheme=h2c
       - traefik.http.routers.woodpecker-grpc-secure.rule=Host(`woodpecker-grpc.simenmo.com`)
-      - traefik.http.routers.woodpecker-grpc-secure.entrypoints=websecure
+      - traefik.http.routers.woodpecker-grpc-secure.entrypoints=web
       - traefik.http.routers.woodpecker-grpc-secure.service=woodpecker-grpc
 
   woodpecker-agent:
