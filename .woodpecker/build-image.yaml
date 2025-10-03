@@ -9,7 +9,7 @@ steps:
     image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
-      repo: ${CI_REPO}
+      repo: ${CI_REPO_NAME}
       registry: ${CI_FORGE_URL}
       username:
         from_secret: registry_username
