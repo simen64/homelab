@@ -1,30 +1,19 @@
-when:
-  - event: push
-  - path:
-      include:
-        - "images/**"
-
-variables:
-  - &registry forgejo.simenmo.com
-
 steps:
   build-komodo-core:
+    when:
+      event: push
+      path:
+        include:
+          - "images/komodo-core/**"
     image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
-      repo: ${CI_REPO}
-      registry: *registry
       username:
         from_secret: registry_username
       password:
         from_secret: registry_password
       dockerfile: images/komodo-core/containerfile
       context: "images/"
-      tags:
-        - latest
 
       destinations:
         - forgejo.simenmo.com/simen/homelab/komodo-core:latest
-
-      when:
-        evaluate: 'CI_COMMIT_MESSAGE contains "komodo-core" || CI_PIPELINE_FILES contains "images/komodo-core/"'
