@@ -25,7 +25,7 @@ RUN dnf -y install tailscale
 
 # copy docker compose and env
 COPY resources/komodo/mongo.compose.yaml /etc/containers/docker/komodo/
-COPY resources/komodo/compose.env /etc/containers/docker/komodo/
+COPY resources/komodo/compose.env /usr/share/containers/docker/komodo/
 
 # copy bootstrap.sh
 COPY komodo-core/bootstrap.sh /etc/

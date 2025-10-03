@@ -25,7 +25,7 @@ RUN dnf -y install tailscale
 
 # copy docker compose and env
 COPY resources/komodo-periphery/periphery.compose.yaml /etc/containers/docker/komodo-periphery/
-COPY resources/komodo-periphery/compose.env /etc/containers/docker/komodo-periphery/
+COPY resources/komodo-periphery/compose.env /usr/share/containers/docker/komodo-periphery/
 
 # copy bootstrap.sh
 COPY komodo-agent/bootstrap-gpu.sh /etc/
