@@ -17,3 +17,22 @@ steps:
 
       destinations:
         - forgejo.simenmo.com/simen/homelab/komodo-core:latest
+
+  build-komodo-agent:
+    when:
+      event: push
+      path:
+        include: ["images/komodo-agent/**", "images/resources/**"]
+    image: woodpeckerci/plugin-docker-buildx
+    pull: true
+    settings:
+      dry-run: false
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      platforms: linux/amd64
+      repo: forgejo.simenmo.com/simen/homelab/komodo-agent
+      tag: latest
+      dockerfile: images/komodo-agent/containerfile
+      context: "images/"
