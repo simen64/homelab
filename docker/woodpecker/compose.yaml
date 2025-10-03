@@ -32,15 +32,13 @@ services:
     image: woodpeckerci/woodpecker-agent:v3
     command: agent
     restart: always
-    networks:
-      - proxy
     depends_on:
       - woodpecker-server
     volumes:
       - woodpecker-agent-config:/etc/woodpecker
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - WOODPECKER_SERVER=https://woodpecker-grpc.simenmo.com
+      - WOODPECKER_SERVER=woodpecker-server:9000
       - WOODPECKER_AGENT_SECRET=${AGENT_SECRET}
       - WOODPECKER_HEALTHCHECK_ADDR=:3002
 
