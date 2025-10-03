@@ -7,6 +7,7 @@ steps:
     image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
+      dry-run: false
       username:
         from_secret: registry_username
       password:
