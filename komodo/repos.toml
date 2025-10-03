@@ -3,5 +3,6 @@ name = "homelab"
 tags = ["repos"]
 [repo.config]
 server = "core"
-git_account = "simen64"
-repo = "simen64/homelab"
+git_provider = "forgejo.simenmo.com"
+git_account = "simen"
+repo = "simen/homelab"
