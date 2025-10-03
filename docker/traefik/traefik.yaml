@@ -19,6 +19,10 @@ entryPoints:
     http:
       tls:
         certResolver: hetzner
+
+  ssh:
+    address: ":2222/tcp"
+
 providers:
   file:
     directory: /etc/traefik/dynamic/
