@@ -32,6 +32,7 @@ steps:
       password:
         from_secret: registry_password
       platforms: linux/amd64
+      registry: forgejo.simenmo.com
       repo: forgejo.simenmo.com/simen/homelab/komodo-agent
       tag: latest
       dockerfile: images/komodo-agent/containerfile
