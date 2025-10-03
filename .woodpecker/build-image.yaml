@@ -12,7 +12,7 @@ steps:
     image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
-      repo: ${CI_REPO_NAME}/komodo-core
+      repo: ${CI_REPO}
       registry: *registry
       username:
         from_secret: registry_username
@@ -22,5 +22,9 @@ steps:
       context: "images/"
       tags:
         - latest
+
+      destinations:
+        - forgejo.simenmo.com/simen/homelab/komodo-core:latest
+
       when:
         evaluate: 'CI_COMMIT_MESSAGE contains "komodo-core" || CI_PIPELINE_FILES contains "images/komodo-core/"'
