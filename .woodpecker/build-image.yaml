@@ -6,7 +6,7 @@ when:
 
 steps:
   build-komodo-core:
-    image: woodpeckerci/plugin-docker-buildx
+    image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
       repo: ${CI_REPO_OWNER}
@@ -16,6 +16,7 @@ steps:
       password:
         from_secret: registry_password
       dockerfile: images/komodo-core/containerfile
+      context: "images/"
       tags:
         - latest
       when:
