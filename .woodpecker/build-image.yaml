@@ -3,9 +3,7 @@ steps:
     when:
       event: push
       path:
-        include:
-          - "images/komodo-core/**"
-          - "images/resources/**"
+        include: ["images/komodo-core**", "images/resources/**"]
     image: woodpeckerci/plugin-kaniko
     pull: true
     settings:
