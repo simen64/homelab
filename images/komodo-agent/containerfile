@@ -12,7 +12,7 @@ RUN sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://
 
 RUN dnf check-update -y 1password-cli && dnf -y install 1password-cli
 
-# install and enable docker
+# install docker
 RUN curl --output-dir "/etc/yum.repos.d" --remote-name https://download.docker.com/linux/fedora/docker-ce.repo
 
 RUN dnf -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine moby-engine containerd runc docker-cli
