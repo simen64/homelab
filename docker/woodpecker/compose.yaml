@@ -10,6 +10,7 @@ services:
       - WOODPECKER_FORGEJO_URL=https://forgejo.simenmo.com
       - WOODPECKER_FORGEJO_CLIENT=${WOODPECKER_FORGEJO_CLIENT}
       - WOODPECKER_FORGEJO_SECRET=${WOODPECKER_FORGEJO_SECRET}
+      - AGENT_SECRET=${AGENT_SECRET}
     networks:
       - proxy
     restart: always
@@ -33,8 +34,8 @@ services:
       - woodpecker-agent-config:/etc/woodpecker
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - WOODPECKER_SERVER=woodpecker-server:9000
-      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
+      - WOODPECKER_SERVER=https://woodpecker.simenmo.com
+      - WOODPECKER_AGENT_SECRET=${AGENT_SECRET}
 
 volumes:
   woodpecker-server-data:
