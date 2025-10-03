@@ -36,5 +36,5 @@ COPY komodo-agent/komodo-periphery-docker-compose.service /usr/lib/systemd/syste
 # copy container policy
 COPY resources/system-configs/policy.json /etc/containers/
 
-# disable resolved listener
+# disable resolved listener for agents
 #COPY resources/system-configs/disable-resolved-stub.conf /etc/systemd/resolved.conf.d/
