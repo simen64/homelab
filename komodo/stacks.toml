@@ -19,6 +19,57 @@ run_directory = "docker/forgejo/"
 ##
 
 [[stack]]
+name = "ollama"
+tags = ["stacks"]
+[stack.config]
+server = "gpu"
+poll_for_updates = true
+auto_update = true
+repo = "mythrantic/ollama-docker"
+file_paths = [
+  "docker-compose-ollama-gpu.yaml"
+]
+
+##
+
+[[stack]]
+name = "opencloud"
+tags = ["stacks"]
+[stack.config]
+server = "cloud"
+linked_repo = "homelab"
+run_directory = "docker/opencloud/"
+file_paths = [
+  "compose.yaml",
+  "weboffice/collabora.yml",
+  "external-proxy/opencloud.yml",
+  "external-proxy/collabora.yml"
+]
+additional_env_files = ["env"]
+environment = """
+SMTP_HOST=smtp.gmail.com
+# Port of the SMTP host to connect to.
+SMTP_PORT=587
+# An eMail address that is used for sending OpenCloud notification eMails
+# like "opencloud notifications <noreply@yourdomain.com>".
+SMTP_SENDER=simensmtp@gmail.com
+# Username for the SMTP host to connect to.
+SMTP_USERNAME=simensmtp@gmail.com
+# Password for the SMTP host to connect to.
+SMTP_PASSWORD=[[SMTP_PASSWORD]]
+# Authentication method for the SMTP communication.
+SMTP_AUTHENTICATION=login
+# Encryption method for the SMTP communication. Possible values are 'starttls', 'ssltls' and 'none'
+SMTP_TRANSPORT_ENCRYPTION=starttls
+# Allow insecure connections to the SMTP server. Defaults to false.
+SMTP_INSECURE=false
+
+INITIAL_ADMIN_PASSWORD=[[OPENCLOUD_ADMIN_PASSWORD]]
+"""
+
+##
+
+[[stack]]
 name = "pi-hole"
 tags = ["stacks"]
 [stack.config]
@@ -29,7 +80,6 @@ post_deploy.command = """
   # Add multiple commands on new lines. Supports comments.
 docker exec -it pihole pihole setpassword [[PI-HOLE_PASSWORD]]
 """
-extra_args = []
 
 ##
 
