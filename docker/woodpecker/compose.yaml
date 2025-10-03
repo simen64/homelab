@@ -6,15 +6,18 @@ services:
     environment:
       - WOODPECKER_OPEN=true
       - WOODPECKER_HOST=https://woodpecker.simenmo.com
-      - WOODPECKER_GITHUB=true
-      - WOODPECKER_GITHUB_CLIENT=${WOODPECKER_GITHUB_CLIENT}
-      - WOODPECKER_GITHUB_SECRET=${WOODPECKER_GITHUB_SECRET}
-      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
+      - WOODPECKER_FORGEJO=true
+        WOODPECKER_FORGEJO_URL=https://forgejo.simenmo.com
+      - WOODPECKER_FORGEJO_CLIENT=${WOODPECKER_FORGEJO_CLIENT}
+      - WOODPECKER_FORGEJO_SECRET=${WOODPECKER_FORGEJO_SECRET}
+    networks:
+      - proxy
+    restart: always
     labels:
       - traefik.enable=true
       - traefik.http.services.woodpecker-service.loadbalancer.server.port=8000
 
-      - traefik.http.routers.woodpecker-grpc-secure.rule=Host(`woodpecker-grpc.example.com`)
+      - traefik.http.routers.woodpecker-grpc-secure.rule=Host(`woodpecker-grpc.simenmo.com`)
       - traefik.http.services.woodpecker-grpc.loadbalancer.server.port=9000
       - traefik.http.services.woodpecker-grpc.loadbalancer.server.scheme=h2c
 
@@ -22,6 +25,8 @@ services:
     image: woodpeckerci/woodpecker-agent:v3
     command: agent
     restart: always
+    networks:
+      - proxy
     depends_on:
       - woodpecker-server
     volumes:
@@ -34,6 +39,7 @@ services:
 volumes:
   woodpecker-server-data:
   woodpecker-agent-config:
+
 networks:
   proxy:
     external: true
