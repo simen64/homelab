@@ -7,7 +7,7 @@ services:
       - WOODPECKER_OPEN=true
       - WOODPECKER_HOST=https://woodpecker.simenmo.com
       - WOODPECKER_FORGEJO=true
-        WOODPECKER_FORGEJO_URL=https://forgejo.simenmo.com
+      - WOODPECKER_FORGEJO_URL=https://forgejo.simenmo.com
       - WOODPECKER_FORGEJO_CLIENT=${WOODPECKER_FORGEJO_CLIENT}
       - WOODPECKER_FORGEJO_SECRET=${WOODPECKER_FORGEJO_SECRET}
     networks:
