@@ -42,6 +42,7 @@ services:
     environment:
       - WOODPECKER_SERVER=https://woodpecker.simenmo.com
       - WOODPECKER_AGENT_SECRET=${AGENT_SECRET}
+      - WOODPECKER_HEALTHCHECK_ADDR=:3002
 
 volumes:
   woodpecker-server-data:
