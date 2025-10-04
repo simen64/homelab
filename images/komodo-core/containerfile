@@ -34,7 +34,10 @@ COPY komodo-core/bootstrap.sh /etc/
 COPY komodo-core/komodo-docker-compose.service /usr/lib/systemd/system/
 
 # copy container policy
-COPY resources/system-configs/policy.json /etc/containers/
+COPY resources/system-configs/policy.json /etc/containers/networks/
+
+#copy rpm-ostree timer conf
+COPY resources/system-configs/rpm-ostreed-automatic.timer-override.conf /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
 
 # disable resolved listener (for agh)
 COPY resources/system-configs/disable-resolved-stub.conf /etc/systemd/resolved.conf.d/
