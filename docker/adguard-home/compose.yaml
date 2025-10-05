@@ -9,11 +9,11 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-   #   - 880:80/tcp
-   #   - 3001:3000/tcp
+    #   - 880:80/tcp
+    #   - 3001:3000/tcp
     volumes:
-      - ./workdir:/opt/adguardhome/work
-      - ./confdir:/opt/adguardhome/conf
+      - /etc/adguardhome/workdir:/opt/adguardhome/work
+      - /etc/adguardhome/confdir:/opt/adguardhome/conf
     labels:
       - traefik.enable=true
       - traefik.http.services.adguard-home.loadbalancer.server.port=3000
