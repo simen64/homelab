@@ -10,15 +10,18 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      repo:
+        - forgejo.simenmo.com/simen64/homelab/komodo-core
+        - ghcr.io/simen64/homelab/komodo-core
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-core:latest
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-core
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-core:latest
+          repo: ghcr.io/simen64/homelab/komodo-core
           username:
             from_secret: registry_username
           password:
@@ -40,15 +43,18 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      repo:
+        - forgejo.simenmo.com/simen64/homelab/komodo-core
+        - ghcr.io/simen64/homelab/komodo-core
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent:latest
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-agent:latest
+          repo: ghcr.io/simen64/homelab/komodo-agent
           username:
             from_secret: registry_username
           password:
@@ -70,15 +76,18 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      repo:
+        - forgejo.simenmo.com/simen64/homelab/komodo-core
+        - ghcr.io/simen64/homelab/komodo-core
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu:latest
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-agent-gpu:latest
+          repo: ghcr.io/simen64/homelab/komodo-agent-gpu
           username:
             from_secret: registry_username
           password:
