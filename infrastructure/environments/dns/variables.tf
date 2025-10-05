@@ -29,7 +29,7 @@ variable "rewrites" {
     },
     {
       domain = "*.simenmo.com"
-      answer = "192.168.20.50"
+      answer = "100.64.0.15"
     },
   ]
 }
