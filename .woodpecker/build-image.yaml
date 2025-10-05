@@ -12,13 +12,13 @@ steps:
     settings:
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-core
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-core:latest
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-core
+          repo: ghcr.io/simen64/homelab/komodo-core:latest
           username:
             from_secret: registry_username
           password:
@@ -42,13 +42,13 @@ steps:
     settings:
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent:latest
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-agent
+          repo: ghcr.io/simen64/homelab/komodo-agent:latest
           username:
             from_secret: registry_username
           password:
@@ -72,13 +72,13 @@ steps:
     settings:
       logins:
         - registry: https://forgejo.simenmo.com
-          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu
+          repo: forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu:latest
           username:
             from_secret: registry_username
           password:
             from_secret: forgejo_registry_password
         - registry: https://ghcr.io
-          repo: ghcr.io/simen64/homelab/komodo-agent-gpu
+          repo: ghcr.io/simen64/homelab/komodo-agent-gpu:latest
           username:
             from_secret: registry_username
           password:
