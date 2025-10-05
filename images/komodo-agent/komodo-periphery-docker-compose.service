@@ -6,7 +6,7 @@ After=docker.service
 [Service]
 Type=exec
 WorkingDirectory=/etc/containers/docker/komodo-periphery/
-ExecStart=/usr/bin/docker compose pull
+ExecStartPre=/usr/bin/docker compose -f periphery.compose.yaml pull
 ExecStart=/usr/bin/docker compose -f periphery.compose.yaml up
 ExecStop=/usr/bin/docker compose -f periphery.compose.yaml down
 Restart=always

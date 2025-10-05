@@ -11,6 +11,11 @@
           "type": "insecureAcceptAnything"
           }
       ],
+      "forgejo.simenmo.com/simen": [
+        {
+          "type": "insecureAcceptAnything"
+          }
+      ],
       "gcr.io/projectsigstore": [
         {
           "type": "sigstoreSigned",
