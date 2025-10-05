@@ -10,14 +10,21 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      logins:
+        - registry: https://forgejo.simenmo.com
+          repo: forgejo.simenmo.com/simen/homelab/komodo-core
+          username:
+            from_secret: forgejo_registry_username
+          password:
+            from_secret: forgejo_registry_password
+        - registry: https://ghcr.io
+          repo: ghcr.io/simen64/homelab/komodo-core
+          username:
+            from_secret: ghcr_registry_username
+          password:
+            from_secret: ghcr_registry_password
       dry-run: false
-      username:
-        from_secret: registry_username
-      password:
-        from_secret: registry_password
       platforms: linux/amd64
-      registry: forgejo.simenmo.com
-      repo: forgejo.simenmo.com/simen/homelab/komodo-core
       tag: latest
       dockerfile: images/komodo-core/containerfile
       context: "images/"
@@ -33,14 +40,21 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      logins:
+        - registry: https://forgejo.simenmo.com
+          repo: forgejo.simenmo.com/simen/homelab/komodo-agent
+          username:
+            from_secret: forgejo_registry_username
+          password:
+            from_secret: forgejo_registry_password
+        - registry: https://ghcr.io
+          repo: ghcr.io/simen64/homelab/komodo-agent
+          username:
+            from_secret: ghcr_registry_username
+          password:
+            from_secret: ghcr_registry_password
       dry-run: false
-      username:
-        from_secret: registry_username
-      password:
-        from_secret: registry_password
       platforms: linux/amd64
-      registry: forgejo.simenmo.com
-      repo: forgejo.simenmo.com/simen/homelab/komodo-agent
       tag: latest
       dockerfile: images/komodo-agent/containerfile
       context: "images/"
@@ -56,14 +70,21 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      logins:
+        - registry: https://forgejo.simenmo.com
+          repo: forgejo.simenmo.com/simen/homelab/komodo-agent-gpu
+          username:
+            from_secret: forgejo_registry_username
+          password:
+            from_secret: forgejo_registry_password
+        - registry: https://ghcr.io
+          repo: ghcr.io/simen64/homelab/komodo-agent-gpu
+          username:
+            from_secret: ghcr_registry_username
+          password:
+            from_secret: ghcr_registry_password
       dry-run: false
-      username:
-        from_secret: registry_username
-      password:
-        from_secret: registry_password
       platforms: linux/amd64
-      registry: forgejo.simenmo.com
-      repo: forgejo.simenmo.com/simen/homelab/komodo-agent-gpu
       tag: latest
       dockerfile: images/komodo-agent/containerfile-nvidia
       context: "images/"
