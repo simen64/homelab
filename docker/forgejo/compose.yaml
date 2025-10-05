@@ -9,7 +9,7 @@ services:
     networks:
       - proxy
     volumes:
-      - ./forgejo:/data
+      - /etc/forgejo:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     labels:
@@ -24,4 +24,3 @@ services:
 networks:
   proxy:
     external: true
-
