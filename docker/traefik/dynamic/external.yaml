@@ -13,7 +13,7 @@ http:
               - "*.simenmo.com"
 
     immich-router:
-      rule: "Host(`komodo.simenmo.com`)"
+      rule: "Host(`immich.simenmo.com`)"
       entryPoints:
         - websecure
       service: komodo-service
