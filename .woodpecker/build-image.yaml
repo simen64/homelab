@@ -44,8 +44,8 @@ steps:
     pull: true
     settings:
       repo:
-        - forgejo.simenmo.com/simen64/homelab/komodo-core
-        - ghcr.io/simen64/homelab/komodo-core
+        - forgejo.simenmo.com/simen64/homelab/komodo-agent
+        - ghcr.io/simen64/homelab/komodo-agent
       logins:
         - registry: https://forgejo.simenmo.com
           repo: forgejo.simenmo.com/simen64/homelab/komodo-agent
@@ -77,8 +77,8 @@ steps:
     pull: true
     settings:
       repo:
-        - forgejo.simenmo.com/simen64/homelab/komodo-core
-        - ghcr.io/simen64/homelab/komodo-core
+        - forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu
+        - ghcr.io/simen64/homelab/komodo-agent-gpu
       logins:
         - registry: https://forgejo.simenmo.com
           repo: forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu
