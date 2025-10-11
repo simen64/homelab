@@ -16,7 +16,7 @@ http:
       rule: "Host(`immich.simenmo.com`)"
       entryPoints:
         - websecure
-      service: komodo-service
+      service: immich-service
       tls:
         certResolver: hetzner
         domains:
