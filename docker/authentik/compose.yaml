@@ -18,6 +18,8 @@ services:
     restart: unless-stopped
     volumes:
       - database:/var/lib/postgresql/data
+    networks:
+      - authentik
   redis:
     command: --save 60 1 --loglevel warning
     healthcheck:
@@ -32,6 +34,8 @@ services:
     restart: unless-stopped
     volumes:
       - redis:/data
+    networks:
+      - authentik
   authentik:
     command: server
     depends_on:
@@ -54,10 +58,11 @@ services:
       - ${COMPOSE_PORT_HTTPS:-9443}:9443
     restart: unless-stopped
     volumes:
-      - ./media:/media
-      - ./custom-templates:/templates
+      - /etc/authentik/media:/media
+      - /etc/authentik/custom-templates:/templates
     networks:
       - proxy
+      - authentik
     labels:
       - traefik.enable=true
       - traefik.http.services.authentik.loadbalancer.server.port=9000
@@ -82,9 +87,11 @@ services:
     user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./media:/media
-      - ./certs:/certs
-      - ./custom-templates:/templates
+      - /etc/authentik/media:/media
+      - /etc/authentik/certs:/certs
+      - /etc/authentik/custom-templates:/templates
+    networks:
+      - authentik
 volumes:
   database:
     driver: local
@@ -94,3 +101,4 @@ volumes:
 networks:
   proxy:
     external: true
+  authentik:
