@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
     volumes:
       - redis:/data
-  server:
+  authentik:
     command: server
     depends_on:
       postgresql:
