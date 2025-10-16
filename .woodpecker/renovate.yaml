@@ -1,0 +1,32 @@
+when:
+  - event: cron
+    cron: renovate
+  - event: manual
+
+steps:
+  renovate:
+    image: renovate/renovate:latest
+    environment:
+      RENOVATE_PLATFORM: forgejo
+      RENOVATE_ENDPOINT: https://forgejo.simenmo.com
+      RENOVATE_GIT_AUTHOR: Renovate Bot <bot@renovateapp.com>
+      LOG_LEVEL: debug
+      RENOVATE_TOKEN:
+        from_secret: renovate_token
+    commands:
+      - |
+        cat <<EOF > config.js
+        module.exports = {
+          platform: 'forgejo',
+        endpoint: 'https://forgejo.simenmo.com',
+          token: '${RENOVATE_TOKEN}',
+          repositories: ['simen64/homelab'],
+          gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
+          onboarding: true,
+          requireConfig: 'optional',
+          forgejo: {
+        endpoint: 'https://forgejo.simenmo.com'
+          }
+        };
+        EOF
+      - renovate --config-file=config.js
