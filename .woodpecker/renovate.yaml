@@ -6,6 +6,7 @@ when:
 steps:
   renovate:
     image: renovate/renovate:latest
+    pull: true
     environment:
       RENOVATE_PLATFORM: forgejo
       RENOVATE_ENDPOINT: https://forgejo.simenmo.com
@@ -24,9 +25,6 @@ steps:
           gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
           onboarding: true,
           requireConfig: 'optional',
-          forgejo: {
-        endpoint: 'https://forgejo.simenmo.com'
-          }
         };
         EOF
       - renovate --config-file=config.js
