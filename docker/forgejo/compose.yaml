@@ -1,11 +1,11 @@
 services:
   forgejo:
-    image: codeberg.org/forgejo/forgejo:12
+    image: codeberg.org/forgejo/forgejo:13@sha256:adff37b54f924a95ac7425e2c4d9732982dfbfb359af8feaf4092471d812dff3
     container_name: forgejo
     environment:
       - USER_UID=1000
       - USER_GID=1000
-    restart: always
+    restart: unless-stopped
     networks:
       - proxy
     volumes:
