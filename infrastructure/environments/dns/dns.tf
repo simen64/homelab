@@ -21,3 +21,19 @@ module "dns-rewrite" {
   source = "../../modules/dns-rewrite"
   rewrites = var.rewrites
 }
+
+resource "adguard_config" "configuration" {
+  querylog = {
+    enabled = true
+  }
+
+  blocked_services = ["temu", "shein"]
+
+  dns = {
+    upstream_dns = ["https://dns.quad9.net/dns-query", "https://dns.mullvad.net/dns-query"]
+
+    fallback_dns = ["https://dns.cloudflare.com/dns-query", "https://dns.google/dns-query", "1.1.1.1", "1.0.0.1", "8.8.8.8", "8.8.4.4"]
+
+    upstream_mode = "parallel"
+  }
+}
