@@ -27,4 +27,4 @@ steps:
           requireConfig: 'optional',
         };
         EOF
-      - renovate --config-file=config.js
+      - renovate
