@@ -1,7 +1,7 @@
 ---
 services:
   opencloud:
-    image: ${OC_DOCKER_IMAGE:-opencloudeu/opencloud-rolling}:${OC_DOCKER_TAG:-latest}
+    image: ${OC_DOCKER_IMAGE:-opencloudeu/opencloud-rolling}:${OC_DOCKER_TAG:2.0.4@sha256:8d862e83bea7803fd0d48d68ecd1eba8960fe07ac2b8b021f0e921502c962e38}
     # changelog: https://github.com/opencloud-eu/opencloud/tree/main/changelog
     # release notes: https://docs.opencloud.eu/opencloud_release_notes.html
     networks:
