@@ -6,7 +6,7 @@ terraform {
     }
     talos = {
       source = "registry.terraform.io/siderolabs/talos"
-      version = "0.7.1"
+      version = "0.9.0"
     }
     nextdns = {
       source = "registry.terraform.io/carbans/nextdns"
