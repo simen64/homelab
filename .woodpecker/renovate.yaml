@@ -1,6 +1,6 @@
 when:
   - event: cron
-    cron: renovate
+    cron: nightly_build
   - event: manual
 
 steps:
