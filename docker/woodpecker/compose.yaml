@@ -21,7 +21,7 @@ services:
       - traefik.http.services.woodpecker-service.loadbalancer.server.port=8000
 
   woodpecker-agent:
-    image: woodpeckerci/woodpecker-agent:v3.1.0
+    image: woodpeckerci/woodpecker-agent:v3.11.0
     command: agent
     restart: always
     networks:
