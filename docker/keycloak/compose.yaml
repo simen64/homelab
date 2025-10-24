@@ -12,7 +12,7 @@ services:
       keycloak:
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.4.1
+    image: quay.io/keycloak/keycloak:26.4.2
     restart: always
     command: start
     depends_on:
