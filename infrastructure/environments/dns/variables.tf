@@ -81,10 +81,6 @@ variable "blocklists" {
     url  = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt"
   },
   {
-    name = "HaGeZi's The World's Most Abused TLDs"
-    url  = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_56.txt"
-  },
-  {
     name = "Malicious URL Blocklist (URLHaus)"
     url  = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt"
   },
