@@ -18,7 +18,7 @@ services:
       proxy:
     labels:
       - traefik.enable=true
-      - traefik.http.services.keycloak.loadbalancer.server.port=1411
+      - traefik.http.services.pocket-id.loadbalancer.server.port=1411
 
 networks:
   proxy:
