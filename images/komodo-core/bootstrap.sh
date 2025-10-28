@@ -20,5 +20,7 @@ op inject -i /usr/share/containers/docker/komodo/compose.env -o compose.env
 
 run0 mv compose.env /etc/containers/docker/komodo/compose.env
 
+ujust dns-selector resolver resolved
+
 systemctl enable komodo-docker-compose.service
 systemctl start komodo-docker-compose.service
