@@ -14,6 +14,8 @@ services:
       timeout: 5s
       retries: 2
       start_period: 10s
+    networks:
+      proxy:
     labels:
       - traefik.enable=true
       - traefik.http.services.keycloak.loadbalancer.server.port=1411
