@@ -1,0 +1,23 @@
+services:
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id:v1
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - 1411:1411
+    volumes:
+      - "/etc/pocket-id/data:/app/data"
+    # Optional healthcheck
+    healthcheck:
+      test: ["CMD", "/app/pocket-id", "healthcheck"]
+      interval: 1m30s
+      timeout: 5s
+      retries: 2
+      start_period: 10s
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.keycloak.loadbalancer.server.port=1411
+
+networks:
+  proxy:
+    external: true
