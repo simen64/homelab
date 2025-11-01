@@ -6,6 +6,7 @@ steps:
           include: ["images/komodo-core/**", "images/resources/**"]
       - event: cron
         cron: nightly_build
+      - event: manual
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
