@@ -38,6 +38,7 @@ COPY resources/system-configs/policy.json /etc/containers/
 
 #copy rpm-ostree timer conf
 COPY resources/system-configs/rpm-ostreed-automatic.timer-override.conf /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
+COPY resources/system-configs/rpm-ostreed.conf /etc/rpm-ostreed.conf
 
 # disable resolved listener
 #COPY resources/system-configs/disable-resolved-stub.conf /etc/systemd/resolved.conf.d/
