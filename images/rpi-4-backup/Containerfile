@@ -1,0 +1,54 @@
+FROM quay.io/fedora/fedora-bootc:latest
+
+ARG sshpubkey
+
+RUN if test -z "$sshpubkey"; then echo "must provide sshpubkey"; exit 1; fi; \
+  useradd -G wheel core && \
+  mkdir -m 0700 -p /home/core/.ssh && \
+  echo $sshpubkey > /home/core/.ssh/authorized_keys && \
+  chmod 0600 /home/core/.ssh/authorized_keys && \
+  chown -R core: /home/core
+
+RUN set -eu; mkdir -p /usr/ssh && \
+  echo 'AuthorizedKeysFile /usr/ssh/%u.keys .ssh/authorized_keys .ssh/authorized_keys2' >> /etc/ssh/sshd_config.d/30-auth-system.conf && \
+  echo ${sshpubkey} > /usr/ssh/root.keys && chmod 0600 /usr/ssh/root.keys
+
+# install onepassword cli
+RUN rpm --import https://downloads.1password.com/linux/keys/1password.asc
+RUN sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+
+RUN dnf check-update -y 1password-cli && dnf -y install 1password-cli
+
+# install docker
+RUN curl --output-dir "/etc/yum.repos.d" --remote-name https://download.docker.com/linux/fedora/docker-ce.repo
+
+RUN dnf -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine moby-engine containerd runc docker-cli
+RUN dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+RUN systemctl enable docker
+
+# install tailscale
+RUN dnf -y install tailscale
+
+# copy docker compose and env
+COPY resources/komodo-periphery/periphery.compose.yaml /etc/containers/docker/komodo-periphery/
+COPY resources/komodo-periphery/compose.env /usr/share/containers/docker/komodo-periphery/
+
+# copy bootstrap.sh
+COPY komodo-agent/bootstrap.sh /etc/
+
+# copy compose systemd unit
+COPY komodo-agent/komodo-periphery-docker-compose.service /usr/lib/systemd/system/
+# copy container policy
+COPY resources/system-configs/policy.json /etc/containers/
+
+#copy rpm-ostree timer conf
+COPY resources/system-configs/rpm-ostreed-automatic.timer-override.conf /etc/systemd/system/rpm-ostreed-automatic.timer.d/override.conf
+COPY resources/system-configs/rpm-ostreed.conf /etc/rpm-ostreed.conf
+
+# setup and install borg
+RUN dnf -y install borgbackup
+
+RUN useradd -ms /bin/bash borg
+USER borg
+WORKDIR /home/borg
