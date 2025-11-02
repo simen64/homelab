@@ -40,6 +40,7 @@ steps:
           include: ["images/komodo-agent/**", "images/resources/**"]
       - event: cron
         cron: nightly_build
+      - event: manual
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
@@ -73,6 +74,7 @@ steps:
           include: ["images/komodo-agent/**", "images/resources/**"]
       - event: cron
         cron: nightly_build
+      - event: manual
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
@@ -106,10 +108,14 @@ steps:
           include: ["images/rpi-4-backup/**", "images/resources/**"]
       - event: cron
         cron: nightly_build
+      - event: manual
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
     settings:
+      build_args:
+        sshpubkey:
+          from_secret: sshpubkey
       repo:
         - forgejo.simenmo.com/simen64/homelab/rpi-4-backup
         - ghcr.io/simen64/homelab/rpi-4-backup
@@ -127,7 +133,7 @@ steps:
           password:
             from_secret: ghcr_registry_password
       dry-run: false
-      platforms: linux/amd64
+      platforms: linux/arm64
       tag: latest
       dockerfile: images/rpi-4-backup/Containerfile
       context: "images/"
