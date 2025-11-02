@@ -30,7 +30,7 @@ steps:
       dry-run: false
       platforms: linux/amd64
       tag: latest
-      dockerfile: images/komodo-core/containerfile
+      dockerfile: images/komodo-core/Containerfile
       context: "images/"
 
   build-komodo-agent:
@@ -63,7 +63,7 @@ steps:
       dry-run: false
       platforms: linux/amd64
       tag: latest
-      dockerfile: images/komodo-agent/containerfile
+      dockerfile: images/komodo-agent/Containerfile
       context: "images/"
 
   build-komodo-agent-gpu:
@@ -96,5 +96,38 @@ steps:
       dry-run: false
       platforms: linux/amd64
       tag: latest
-      dockerfile: images/komodo-agent/containerfile-nvidia
+      dockerfile: images/komodo-agent/Containerfile-nvidia
+      context: "images/"
+
+  build-rpi-4-backup:
+    when:
+      - event: push
+        path:
+          include: ["images/rpi-4-backup/**", "images/resources/**"]
+      - event: cron
+        cron: nightly_build
+
+    image: woodpeckerci/plugin-docker-buildx
+    pull: true
+    settings:
+      repo:
+        - forgejo.simenmo.com/simen64/homelab/rpi-4-backup
+        - ghcr.io/simen64/homelab/rpi-4-backup
+      logins:
+        - registry: https://forgejo.simenmo.com
+          repo: forgejo.simenmo.com/simen64/homelab/rpi-4-backup
+          username:
+            from_secret: registry_username
+          password:
+            from_secret: forgejo_registry_password
+        - registry: https://ghcr.io
+          repo: ghcr.io/simen64/homelab/rpi-4-backup
+          username:
+            from_secret: registry_username
+          password:
+            from_secret: ghcr_registry_password
+      dry-run: false
+      platforms: linux/amd64
+      tag: latest
+      dockerfile: images/rpi-4-backup/Containerfile
       context: "images/"
