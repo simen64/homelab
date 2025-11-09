@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.6
     restart: unless-stopped
     environment:
       - HETZNER_API_KEY=${HETZNER_API_KEY}
