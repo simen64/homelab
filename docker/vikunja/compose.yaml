@@ -19,6 +19,7 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
+      - traefik.http.services.vikunja.loadbalancer.server.port=3456
 
   db:
     image: postgres:18
