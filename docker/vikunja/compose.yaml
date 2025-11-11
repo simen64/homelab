@@ -20,6 +20,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.vikunja.loadbalancer.server.port=3456
+    networks:
+      - proxy
+      - vikunja
 
   db:
     image: postgres:18
@@ -34,7 +37,11 @@ services:
       test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER"]
       interval: 2s
       start_period: 30s
+    networks:
+      - proxy
+      - vikunja
 
 networks:
   proxy:
     external: true
+  vikunja:
