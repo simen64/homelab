@@ -17,6 +17,9 @@ services:
       db:
         condition: service_healthy
     restart: unless-stopped
+    labels:
+      - traefik.enable=true
+
   db:
     image: postgres:18
     environment:
@@ -30,3 +33,7 @@ services:
       test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER"]
       interval: 2s
       start_period: 30s
+
+networks:
+  proxy:
+    external: true
