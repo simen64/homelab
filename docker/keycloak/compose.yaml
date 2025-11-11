@@ -1,7 +1,7 @@
 services:
   postgresql:
     image: postgres:17
-    restart: always
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=keycloak
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -13,7 +13,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.4.2
-    restart: always
+    restart: unless-stopped
     command: start
     depends_on:
       - postgresql
