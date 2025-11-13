@@ -10,6 +10,7 @@ steps:
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
+    failure: ignore
     settings:
       repo:
         - forgejo.simenmo.com/simen64/homelab/komodo-core
@@ -44,6 +45,7 @@ steps:
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
+    failure: ignore
     settings:
       repo:
         - forgejo.simenmo.com/simen64/homelab/komodo-agent
@@ -78,6 +80,7 @@ steps:
 
     image: woodpeckerci/plugin-docker-buildx
     pull: true
+    failure: ignore
     settings:
       repo:
         - forgejo.simenmo.com/simen64/homelab/komodo-agent-gpu
