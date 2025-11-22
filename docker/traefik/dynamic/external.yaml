@@ -34,6 +34,17 @@ http:
           - main: "simenmo.com"
             sans:
               - "*.simenmo.com"
+    nextcloud-router:
+      rule: "Host(`nextcloud.simenmo.com`)"
+      entryPoints:
+        - websecure
+      service: nextcloud-service
+      tls:
+        certResolver: hetzner
+        domains:
+          - main: "simenmo.com"
+            sans:
+              - "*.simenmo.com"
   services:
     komodo-service:
       loadBalancer:
@@ -47,3 +58,7 @@ http:
       loadBalancer:
         servers:
           - url: "http://100.64.0.8:8123"
+    nextcloud-service:
+      loadBalancer:
+        servers:
+          - url: "http://100.64.0.1:80"

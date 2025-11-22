@@ -1,7 +1,7 @@
 services:
   nc:
     image: nextcloud:stable-apache
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
     volumes:
@@ -16,13 +16,13 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_PASSWORD=${NEXTCLOUD_MYSQL_PASSWORD}
-    labels:
-      - traefik.enable=true
-      - traefik.http.services.nc.loadbalancer.server.port=80
+      - TRUSTED_PROXIES=192.168.20.50 100.64.0.15
+      - OVERWRITEPROTOCOL=https
+      - OVERWRITEHOST=nextcloud.simenmo.com
 
   redis:
     image: redis:alpine
-    restart: always
+    restart: unless-stopped
     networks:
       - redisnet
     expose:
@@ -31,7 +31,7 @@ services:
   db:
     image: mariadb:10.5
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-    restart: always
+    restart: unless-stopped
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -50,5 +50,3 @@ volumes:
 networks:
   dbnet:
   redisnet:
-  proxy:
-    external: true
