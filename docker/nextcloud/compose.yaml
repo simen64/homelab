@@ -21,6 +21,7 @@ services:
       - OVERWRITEHOST=nextcloud.simenmo.com
       - NC_maintenance_window_start=1
       - NC_default_phone_region=NO
+      - NC_allow_local_remote_servers=true
 
   redis:
     image: redis:alpine
