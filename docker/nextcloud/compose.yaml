@@ -18,6 +18,7 @@ services:
       - TRUSTED_PROXIES=192.168.20.50 100.64.0.15
       - OVERWRITEPROTOCOL=https
       - OVERWRITEHOST=nextcloud.simenmo.com
+      - NC_maintenance_window_start=1
 
   redis:
     image: redis:alpine
@@ -28,7 +29,7 @@ services:
       - 6379
 
   db:
-    image: mariadb:10.5
+    image: mariadb:11.4
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: unless-stopped
     volumes:
