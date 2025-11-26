@@ -20,6 +20,7 @@ services:
       - OVERWRITEPROTOCOL=https
       - OVERWRITEHOST=nextcloud.simenmo.com
       - NC_maintenance_window_start=1
+      - NC_default_phone_region=NO
 
   redis:
     image: redis:alpine
