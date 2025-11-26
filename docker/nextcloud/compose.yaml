@@ -6,6 +6,7 @@ services:
       - 80:80
     volumes:
       - nc_data:/var/www/html
+      - /dev/urandom:/dev/urandom:ro
     networks:
       - redisnet
       - dbnet
