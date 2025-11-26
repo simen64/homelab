@@ -50,3 +50,5 @@ volumes:
 networks:
   dbnet:
   redisnet:
+  proxy:
+    external: true
