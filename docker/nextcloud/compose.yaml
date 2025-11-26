@@ -9,7 +9,6 @@ services:
     networks:
       - redisnet
       - dbnet
-      - proxy
     environment:
       - REDIS_HOST=redis
       - MYSQL_HOST=db
@@ -50,5 +49,3 @@ volumes:
 networks:
   dbnet:
   redisnet:
-  proxy:
-    external: true
