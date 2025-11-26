@@ -1,9 +1,19 @@
 http:
+  middlewares:
+    hsts:
+      headers:
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        forceSTSHeader: true
+
   routers:
     komodo-router:
       rule: "Host(`komodo.simenmo.com`)"
       entryPoints:
         - websecure
+      middlewares:
+        - hsts
       service: komodo-service
       tls:
         certResolver: hetzner
@@ -16,6 +26,8 @@ http:
       rule: "Host(`immich.simenmo.com`)"
       entryPoints:
         - websecure
+      middlewares:
+        - hsts
       service: immich-service
       tls:
         certResolver: hetzner
@@ -27,6 +39,8 @@ http:
       rule: "Host(`ha-p.simenmo.com`)"
       entryPoints:
         - websecure
+      middlewares:
+        - hsts
       service: ha-p-service
       tls:
         certResolver: hetzner
@@ -38,6 +52,8 @@ http:
       rule: "Host(`nextcloud.simenmo.com`)"
       entryPoints:
         - websecure
+      middlewares:
+        - hsts
       service: nextcloud-service
       tls:
         certResolver: hetzner
