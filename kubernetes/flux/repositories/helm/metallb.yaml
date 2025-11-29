@@ -1,8 +1,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: ingress-nginx
+  name: metallb
   namespace: flux-system
 spec:
   interval: 1h0m0s
   url: https://metallb.github.io/metallb
+
