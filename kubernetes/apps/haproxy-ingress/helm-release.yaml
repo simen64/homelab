@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: haproxy-kubernetes-ingress
+  namespace: haproxy-controller
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kubernetes-ingress
+      sourceRef:
+        kind: HelmRepository
+        name: haproxytech
+        namespace: flux-system
+  install:
+    createNamespace: true
