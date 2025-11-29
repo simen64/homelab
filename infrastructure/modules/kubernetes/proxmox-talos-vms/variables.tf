@@ -23,6 +23,10 @@ variable "dns_search_domain" {
   type = string
 }
 
+variable "file_id" {
+  type = string
+}
+
 variable "control_plane_vms" {
   type = list(object({
     name        = string

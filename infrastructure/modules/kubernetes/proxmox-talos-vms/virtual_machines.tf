@@ -33,7 +33,7 @@ resource "proxmox_virtual_environment_vm" "control_plane_vms" {
 
   disk {
     datastore_id = "local-zfs"
-    file_id      = proxmox_virtual_environment_download_file.talos_nocloud_image.id
+    file_id      = var.file_id
     file_format  = "raw"
     interface    = "virtio0"
     size         = 20
@@ -95,7 +95,7 @@ resource "proxmox_virtual_environment_vm" "worker_vms" {
 
   disk {
     datastore_id = "local-zfs"
-    file_id      = proxmox_virtual_environment_download_file.talos_nocloud_image.id
+    file_id      = var.file_id
     file_format  = "raw"
     interface    = "virtio0"
     size         = 20

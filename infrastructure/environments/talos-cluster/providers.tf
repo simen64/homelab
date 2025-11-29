@@ -8,19 +8,15 @@ terraform {
       source = "registry.terraform.io/siderolabs/talos"
       version = "0.9.0"
     }
-    nextdns = {
-      source = "registry.terraform.io/carbans/nextdns"
-      version = "0.2.2"
-    }
     flux = {
       source = "fluxcd/flux"
       version = "1.7.6"
     }
+    opnsense = {
+      source = "browningluke/opnsense"
+      version = "0.16.1"
+    }
   }
-}
-
-provider "nextdns" {
-  api_key = var.nextdns_api_key
 }
 
 provider "proxmox" {
@@ -29,7 +25,7 @@ provider "proxmox" {
   ssh {
     agent = false
     username = "root"
-    private_key = file("./id_ed25519")
+    private_key = file(var.proxmox_ssh_key)
   }
 }
 
@@ -44,4 +40,11 @@ provider "flux" {
       password = var.github_token
     }
   }
+}
+
+provider "opnsense" {
+  uri = var.opnsense_uri
+  api_key = var.opnsense_api_key
+  api_secret = var.opnsense_api_secret
+  allow_insecure = true
 }

@@ -9,7 +9,7 @@ terraform {
 
 provider "flux" {
   kubernetes = {
-    config_path = "./kubeconfig"
+    config_path = "../talos-cluster/kubeconfig"
   }
   git = {
     url = "https://github.com/${var.github_org}/${var.github_repository}.git"

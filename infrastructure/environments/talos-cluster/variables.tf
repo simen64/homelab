@@ -20,7 +20,22 @@ variable "cluster_name" {
 
 variable "default_gateway" {
   type    = string
-  default = "192.168.50.1"
+  default = "192.168.20.1"
+}
+
+variable "opnsense_uri" {
+  type = string
+  default = "https://192.168.20.1"
+}
+
+variable "opnsense_api_key" {
+  type        = string
+  sensitive = true
+}
+
+variable "opnsense_api_secret" {
+  type        = string
+  sensitive = true
 }
 
 variable "node_name" {
@@ -30,7 +45,7 @@ variable "node_name" {
 
 variable "dns_ip" {
   type = string
-  default = "192.168.20.50"
+  default = "192.168.20.1"
 }
 
 variable "dns_search_domain" {
@@ -41,6 +56,11 @@ variable "dns_search_domain" {
 variable "control_plane_url" {
   type = string
   default = "controlplane.k8s.simen"
+}
+
+variable "control_plane_host" {
+  type = string
+  default = "controlplane"
 }
 
 variable "install_disk" {
@@ -63,8 +83,8 @@ variable "control_plane_vms" {
       node_name  = "pve-1"
       cpu_cores  = 2
       memory     = 4096
-      ip_address = "192.168.50.151"
-      id         = 301
+      ip_address = "192.168.20.200"
+      id         = 300
     }
   ]
 }
@@ -78,7 +98,24 @@ variable "worker_vms" {
     ip_address  = string
     id          = number
   }))
-  default = []
+  default = [
+    {
+      name       = "talos-worker-01"
+      node_name  = "pve-1"
+      cpu_cores  = 2
+      memory     = 2048
+      ip_address = "192.168.20.210"
+      id         = 310
+    },
+    {
+      name       = "talos-worker-02"
+      node_name  = "pve-1"
+      cpu_cores  = 2
+      memory     = 2048
+      ip_address = "192.168.20.211"
+      id         = 311
+    }
+  ]
 }
 
 

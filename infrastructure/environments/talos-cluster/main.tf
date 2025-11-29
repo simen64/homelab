@@ -1,5 +1,5 @@
 module "proxmox-talos-vms" {
-    source = "../../modules/proxmox-talos-vms"
+    source = "../../modules/kubernetes/proxmox-talos-vms"
 
     control_plane_vms = var.control_plane_vms
     worker_vms = var.worker_vms
@@ -9,10 +9,11 @@ module "proxmox-talos-vms" {
     proxmox_ve_api_token = var.proxmox_ve_api_token
     proxmox_endpoint = var.proxmox_endpoint
     proxmox_ssh_key = var.proxmox_ssh_key
+    file_id = proxmox_virtual_environment_download_file.talos_nocloud_image.id
 }
 
 module "proxmox-talos-firewall-rules" {
-  source = "../../modules/proxmox-talos-firewall-rules"
+  source = "../../modules/kubernetes/proxmox-talos-firewall-rules"
 
   depends_on = [ module.proxmox-talos-vms ]
 
@@ -25,7 +26,7 @@ module "proxmox-talos-firewall-rules" {
 }
 
 module "control-plane-dns" {
-  source = "../../modules/control-plane-dns"
+  source = "../../modules/kubernetes/control-plane-vm-dns"
 
   depends_on = [
     module.proxmox-talos-vms
@@ -33,9 +34,12 @@ module "control-plane-dns" {
 
   control_plane_vms = var.control_plane_vms
   worker_vms = var.worker_vms
-  nextdns_profile_id = var.nextdns_profile_id
   control_plane_url = var.control_plane_url
-  nextdns_api_key = var.nextdns_api_key
+  control_plane_host = var.control_plane_host
+  opnsense_api_key = var.opnsense_api_key
+  opnsense_api_secret = var.opnsense_api_secret
+  opnsense_uri = var.opnsense_uri
+  opnsense_ip = var.default_gateway
 }
 
 module "talos-bootstrap" {
@@ -45,7 +49,7 @@ module "talos-bootstrap" {
     module.proxmox-talos-firewall-rules
    ]
 
-  source = "../../modules/talos-bootstrap"
+  source = "../../modules/kubernetes/talos-vm-bootstrap"
 
   control_plane_vms = var.control_plane_vms
   worker_vms = var.worker_vms
