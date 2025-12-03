@@ -3,10 +3,12 @@
 This is the repo containing code and configs for my homelab with a focus on IaC and GitOps.
 
 ## Hardware
+
 I currently use an old gaming PC for proxmox, an old HP workstation for OPNsense, a raspberry pi for Home Assistant, and a VPS from hetzner for headscale. I am also setting up two workstations to use as a k8s cluster.  
 (Pictures and specs coming)
 
 ## Software
+
 | Logo                                                                                                 | Name                                                                       | Description                         |
 |:------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------|-------------------------|
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/nextcloud.png">               | [Nextcloud](https://nextcloud.com/)                                   | File Storage / Syncing  |
@@ -15,14 +17,17 @@ I currently use an old gaming PC for proxmox, an old HP workstation for OPNsense
 Nextcloud runs in a vm on my proxmox node, home assistant on a pi, and headscale on my Hetzner VPS.  
 
 ## Tech stack
+
 My tech stack focuses on IaC and GitOps while being modern, easy to maintain and fun to work while teaching me about DevOps
 
 ### Virtualization
+
 | Logo                                                                                                                                         | Name                                                                      | Description                                                                        |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/proxmox.png">                                                                       | [Proxmox VE](https://www.proxmox.com/en/proxmox-virtual-environment/)     | Open-source virtualization platform based on KVM                                   |
 
 ### IaC & GitOps
+
 |                                       Logo                                        | Name                                                                          | Description                                                           |
 | :-------------------------------------------------------------------------------: | ----------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/opentofu.png"> | [OpenTofu](https://opentofu.org/)                                             | Tool for declaratively managing infrastructure and cloud resources    |
@@ -32,6 +37,7 @@ My tech stack focuses on IaC and GitOps while being modern, easy to maintain and
 |  <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/svg/komodo.svg">  | [Komodo](https://komo.do/)                                                    | Deploys docker compose files pulled from a git repo                   |
 
 ### Operating systems
+
 | Logo                                                                             | Name                                               | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------- |
 | <img width="32" src="https://avatars.githubusercontent.com/u/13804887">          | [Talos Linux](https://www.talos.dev/)              | Minimal, immutable, API driven Linux distribution designed for Kubernetes        |
@@ -39,6 +45,7 @@ My tech stack focuses on IaC and GitOps while being modern, easy to maintain and
 | <img width="32" src="https://secureblue.dev/assets/icons/favicon.svg">           | [Securecore](https://secureblue.dev/)              | A security-focused server linux operating system                                 |
 
 ### Networking
+
 | Logo                                                                                                                             | Name                                                                                                                                | Description                                                                                  |
 | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | <img width="32" src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/opnsense.png">                                                | [OPNsense](https://opnsense.org/)                                                                                                   | Open source firewall and router                                                              |
