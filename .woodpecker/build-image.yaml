@@ -9,7 +9,7 @@ steps:
       - event: manual
 
     image: woodpeckerci/plugin-docker-buildx
-    pull: false
+    pull: true
     failure: ignore
     settings:
       repo:
