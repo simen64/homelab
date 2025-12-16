@@ -1,0 +1,11 @@
+clone:
+  git:
+    image: ghcr.io/simen64/gitverify-clone
+    volumes:
+      - /etc/gitverify.json:/go/src/github.com/supply-chain-tools/gitverify/gitverify.json:ro
+
+steps:
+  prettier:
+    when:
+      - event: push
+    image: woodpeckerci/plugin-prettier:next
