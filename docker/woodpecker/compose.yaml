@@ -12,6 +12,7 @@ services:
       - WOODPECKER_FORGEJO_SECRET=${WOODPECKER_FORGEJO_SECRET}
       - WOODPECKER_PLUGINS_PRIVILEGED=woodpeckerci/plugin-docker-buildx
       - WOODPECKER_PLUGINS_TRUSTED_CLONE=ghcr.io/simen64/gitverify-clone
+      - WOODPECKER_DEFAULT_CLONE_PLUGIN=ghcr.io/simen64/gitverify-clone
       - WOODPECKER_ADMIN=simen64
       # - AGENT_SECRET=${AGENT_SECRET}
     networks:
